@@ -2,7 +2,7 @@
 
 UI tests for kinopoisk.ru
 
-1 Using Advanced Search mode («Расширенный поиск») select country «СССР», fill genre with multiple values «документальный, история, семейный», perform search and verify that the 1st in list is «Винни Пух».
+1 Using Advanced Search mode («Расширенный поиск») select country «СССР», fill genre with multiple values «детский, мультфильм, семейный», perform search and verify that the 1st in list is «Винни Пух».
 
 2 Using «Топ 250» list collect all information about the movies, verify that the number of movies for which 100k+ people voted is 30.
 

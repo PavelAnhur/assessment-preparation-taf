@@ -1,15 +1,16 @@
 package com.epam.steps;
 
 import com.epam.core.step.BaseStep;
+import com.epam.core.util.service.WebElementService;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Selenide.open;
 
 @Slf4j
@@ -36,12 +37,11 @@ public class AdvanceSearchTestSteps extends BaseStep {
     }
 
     public AdvanceSearchTestSteps selectGenre(List<String> genreList) {
-        int yPoint = getDriver().manage().window().getSize().getHeight() / 2;
-        log.info("get in the middle of the screen '{}'", yPoint);
-        executeJavaScript(String.format("window.scrollBy(0, %s);", yPoint));
+        WebElement genreSelectBox = getDriver().findElement(By.id("m_act[genre]"));
+        WebElementService.scrollToElement(getDriver(), genreSelectBox);
 
         log.info("select {} genres", genreList);
-        Select select = new Select(getDriver().findElement(By.id("m_act[genre]")));
+        Select select = new Select(genreSelectBox);
         genreList.forEach(select::selectByVisibleText);
         return this;
     }

@@ -1,0 +1,81 @@
+# STAGES
+
+stages:
+  - review
+  - validate
+  - code_style
+  - pear_review
+  - leads_review
+
+variables:
+  DANGER_GITLAB_HOST: "git.epam.com"
+  DANGER_GITLAB_API_BASE_URL: "https://git.epam.com/api/v4"
+  CHECKSTYLE_THRESHOLD: 15
+
+# STAGE: review
+
+MR Conventions:
+  stage: review
+  image: pavelverkhovtsov/danger-gitlab-ruby:latest
+  script:
+    - ruby scripts/run_danger.rb
+  only:
+    - merge_requests
+  except:
+    - master
+
+# STAGE: validate
+
+Validate:
+  image: maven:3.6.3-openjdk-14
+  stage: validate
+  script:
+    - mvn validate
+  only:
+    - merge_requests
+  except:
+    - master
+
+Compile:
+  image: maven:3.6.3-openjdk-14
+  stage: validate
+  script:
+    - mvn compile
+  only:
+    - merge_requests
+  except:
+    - master
+
+# STAGE: code_style
+
+Checkstyle:
+  image: maven:3.6.3-openjdk-14
+  stage: code_style
+  script:
+    - mvn checkstyle:check -Dcheckstyle.maxAllowedViolations=$CHECKSTYLE_THRESHOLD
+  only:
+    - merge_requests
+  except:
+    - master
+
+# STAGE: approve
+
+Pear Review:
+  stage: pear_review
+  image: pavelverkhovtsov/ubuntu-curl-jq
+  script:
+    - ./scripts/check_approve.sh --pear --approves-count 2
+  only:
+    - merge_requests
+  except:
+    - master
+
+Approve:
+  stage: leads_review
+  image: pavelverkhovtsov/ubuntu-curl-jq
+  script:
+    - ./scripts/check_approve.sh --leads --approves-count 1
+  only:
+    - merge_requests
+  except:
+    - master

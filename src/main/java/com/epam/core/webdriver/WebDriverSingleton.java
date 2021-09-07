@@ -12,7 +12,7 @@ public final class WebDriverSingleton {
 
     public static WebDriver getDriver() {
         if (null == DRIVERS.get()) {
-            DRIVERS.set(new WebDriverCreator().setupWebDriver());
+            DRIVERS.set(new WebDriverFactory().setupWebDriver());
         }
         return DRIVERS.get();
     }

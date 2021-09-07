@@ -11,16 +11,9 @@ import org.testng.Assert;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 @Slf4j
 public class AdvanceSearchTestSteps extends BaseStep {
-
-    public AdvanceSearchTestSteps openHomePage() {
-        open(getHomePageUrl());
-        log.info("open home page '{}'", getHomePageUrl());
-        return this;
-    }
 
     public AdvanceSearchTestSteps clickAdvancedSearchButton() {
         log.info("click advance search button");

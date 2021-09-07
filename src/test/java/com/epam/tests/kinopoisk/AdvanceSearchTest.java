@@ -17,8 +17,8 @@ public class AdvanceSearchTest extends BaseTest {
     @Test(dataProvider = "advancedSearchTestDataProvider", dataProviderClass = KinopoiskTestsDataProvider.class)
     public void kinopoiskAdvanceSearchTest(String country, List<String> genreList, String expectedResult) {
 
-        testSteps.openHomePage()
-                .clickAdvancedSearchButton()
+        testSteps.openHomePage();
+        testSteps.clickAdvancedSearchButton()
                 .selectCountry(country)
                 .selectGenre(genreList)
                 .confirmGenre()

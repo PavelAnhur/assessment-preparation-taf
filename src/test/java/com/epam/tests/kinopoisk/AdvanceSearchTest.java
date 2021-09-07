@@ -1,41 +1,28 @@
 package com.epam.tests.kinopoisk;
 
+import com.epam.core.base.BaseTest;
+import com.epam.dataprovider.KinopoiskTestsDataProvider;
 import com.epam.steps.AdvanceSearchTestSteps;
-import lombok.extern.slf4j.Slf4j;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-@Slf4j
-public class AdvanceSearchTest {
-    private static final String COUNTRY = "СССР";
-    private static final List<String> GENRE_LIST;
-    private static final String EXPECTED_RESULT = "Винни Пух";
+public class AdvanceSearchTest extends BaseTest {
     private final AdvanceSearchTestSteps testSteps;
-
-    static {
-        GENRE_LIST = List.of("детский", "мультфильм", "семейный");
-    }
 
     public AdvanceSearchTest() {
         testSteps = new AdvanceSearchTestSteps();
     }
 
-    @Test
-    public void kinopoiskAdvanceSearchTest() {
+    @Test(dataProvider = "advancedSearchTestDataProvider", dataProviderClass = KinopoiskTestsDataProvider.class)
+    public void kinopoiskAdvanceSearchTest(String country, List<String> genreList, String expectedResult) {
 
         testSteps.openHomePage()
                 .clickAdvancedSearchButton()
-                .selectCountry(COUNTRY)
-                .selectGenre(GENRE_LIST)
+                .selectCountry(country)
+                .selectGenre(genreList)
                 .confirmGenre()
                 .clickSearchButton()
-                .validateResult(EXPECTED_RESULT);
-    }
-
-    @AfterClass(alwaysRun = true)
-    public void tearDown() {
-        testSteps.close();
+                .validateResult(expectedResult);
     }
 }

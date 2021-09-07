@@ -1,6 +1,6 @@
 package com.epam.steps;
 
-import com.epam.core.step.BaseStep;
+import com.epam.core.base.BaseStep;
 import com.epam.core.util.service.WebElementService;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -15,11 +15,10 @@ import static com.codeborne.selenide.Selenide.open;
 
 @Slf4j
 public class AdvanceSearchTestSteps extends BaseStep {
-    private static final String HOME_PAGE_URL = "https://www.kinopoisk.ru/";
 
     public AdvanceSearchTestSteps openHomePage() {
-        open(HOME_PAGE_URL);
-        log.info("open home page '{}'", HOME_PAGE_URL);
+        open(getHomePageUrl());
+        log.info("open home page '{}'", getHomePageUrl());
         return this;
     }
 

@@ -23,12 +23,40 @@ import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 public class WebDriverFactory {
     private static final String VIRTUAL_URL = "http://localhost:4444/wd/hub";
 
-    public WebDriver getChromeDriver() {
+    public WebDriver setupWebDriver() {
+        String browserName = System.getProperty("browser");
+        WebDriver driver;
+        if (null == browserName) {
+            throw new CustomProjectException("browser name can't be null");
+        } else {
+            switch (browserName) {
+                case "firefox":
+                    driver = getFirefoxDriver();
+                    break;
+                case "opera":
+                    driver = getOperaDriver();
+                    break;
+                case "remoteChrome":
+                    driver = getRemoteChromeDriver();
+                    break;
+                case "remoteFirefox":
+                    driver = getRemoteFirefoxDriver();
+                    break;
+                case "chrome":
+                default:
+                    driver = getChromeDriver();
+            }
+        }
+        driver.manage().window().maximize();
+        return driver;
+    }
+
+    private WebDriver getChromeDriver() {
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
     }
 
-    public WebDriver getFirefoxDriver() {
+    private WebDriver getFirefoxDriver() {
         WebDriverManager.firefoxdriver().setup();
         FirefoxProfile profile = new FirefoxProfile();
         profile.setPreference("intl.accept_languages", "en");
@@ -37,18 +65,18 @@ public class WebDriverFactory {
         return new FirefoxDriver(firefoxOptionsLocal);
     }
 
-    public WebDriver getOperaDriver() {
+    private WebDriver getOperaDriver() {
         WebDriverManager.operadriver().setup();
         return new OperaDriver();
     }
 
-    public WebDriver getRemoteChromeDriver() {
+    private WebDriver getRemoteChromeDriver() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setCapability(BROWSER_NAME, BrowserType.CHROME);
         return getRemoteWebDriver(chromeOptions);
     }
 
-    public WebDriver getRemoteFirefoxDriver() {
+    private WebDriver getRemoteFirefoxDriver() {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.setCapability(BROWSER_NAME, BrowserType.FIREFOX);
         return getRemoteWebDriver(firefoxOptions);

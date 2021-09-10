@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
 import java.util.List;
 
@@ -44,17 +43,14 @@ public class AdvanceSearchTestSteps extends BaseStep {
         return this;
     }
 
-    public AdvanceSearchTestSteps clickSearchButton() {
+    public void clickSearchButton() {
         log.info("click search button");
         $("input.el_18.submit.nice_button").click();
-        return this;
     }
 
-    public void validateResult(final String expectedSearchResult) {
-        log.info("validating result..");
-        Assert.assertEquals(
-                $(By.xpath("//span[@class='num' and text()='1']/..//p[@class='name']/a")).getText(),
-                expectedSearchResult,
-                String.format("Search result doesn't contain '%s'", expectedSearchResult));
+    public String getActualSearchResult() {
+        String actualSearchResult = $(By.xpath("//span[@class='num' and text()='1']/..//p[@class='name']/a")).getText();
+        log.info("search result: '{}'", actualSearchResult);
+        return actualSearchResult;
     }
 }

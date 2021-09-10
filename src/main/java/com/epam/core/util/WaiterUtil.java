@@ -4,7 +4,7 @@ import com.epam.core.exceptions.CustomProjectException;
 
 import java.util.function.Supplier;
 
-import static com.epam.core.constants.PauseConstant.PAUSE_TIME_1000;
+import static com.epam.core.constant.PauseConstant.PAUSE_TIME_500;
 
 public final class WaiterUtil {
 
@@ -15,7 +15,7 @@ public final class WaiterUtil {
         int counter = 0;
         while (counter < numberOfAttempts && !supplier.get()) {
             counter++;
-            pause(PAUSE_TIME_1000.getValue());
+            pause(PAUSE_TIME_500.getValue());
         }
         if (counter == numberOfAttempts) {
             throw new CustomProjectException(errorMessage);

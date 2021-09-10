@@ -7,10 +7,10 @@ import org.openqa.selenium.WebDriver;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.epam.core.constant.KinopoiskConstants.HOME_PAGE_URL;
 
 @Slf4j
 public abstract class BaseStep {
-    private static final String HOME_PAGE_URL = "https://www.kinopoisk.ru/";
     private final WebDriver driver;
 
     public BaseStep() {

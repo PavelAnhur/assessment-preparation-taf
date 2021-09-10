@@ -1,11 +1,11 @@
 package com.epam.core.base;
 
 import com.epam.core.webdriver.WebDriverSingleton;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 
 public abstract class BaseTest {
 
-    @AfterClass(alwaysRun = true)
+    @AfterTest(alwaysRun = true)
     public void tearDown() {
         WebDriverSingleton.closeDriver();
     }

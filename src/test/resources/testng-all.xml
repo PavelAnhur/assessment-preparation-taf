@@ -4,9 +4,11 @@
     <listeners>
         <listener class-name="com.epam.core.util.retry.RetryListener"/>
     </listeners>
-    <test name="C:/IdeaProjects/Assessment-Preparation">
+    <test name="Kinopoisk UI Tests" parallel="tests" thread-count="2">
         <classes>
             <class name="com.epam.tests.kinopoisk.AdvanceSearchTest"/>
+            <class name="com.epam.tests.kinopoisk.AmountOfViewsTest"/>
+            <class name="com.epam.tests.kinopoisk.MedianRatingTest"/>
         </classes>
     </test>
 </suite>

@@ -1,7 +1,7 @@
 package com.epam.steps;
 
+import com.codeborne.selenide.Selenide;
 import com.epam.core.base.BaseStep;
-import com.epam.core.util.service.WebElementService;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -28,8 +28,8 @@ public class AdvanceSearchTestSteps extends BaseStep {
     }
 
     public AdvanceSearchTestSteps selectGenre(List<String> genreList) {
-        WebElement genreSelectBox = getDriver().findElement(By.id("m_act[genre]"));
-        WebElementService.scrollToElement(getDriver(), genreSelectBox);
+        WebElement genreSelectBox = $(By.id("m_act[genre]"));
+        Selenide.actions().moveToElement(genreSelectBox);
 
         log.info("select {} genres", genreList);
         Select select = new Select(genreSelectBox);

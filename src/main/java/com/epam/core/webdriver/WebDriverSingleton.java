@@ -16,4 +16,15 @@ public final class WebDriverSingleton {
         }
         return DRIVER.get();
     }
+
+    public static void closeDriver() {
+        if (null != DRIVER.get()) {
+            try {
+                DRIVER.get().quit();
+                DRIVER.remove();
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
+        }
+    }
 }

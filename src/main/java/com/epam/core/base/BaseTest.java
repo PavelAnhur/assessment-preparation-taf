@@ -1,12 +1,19 @@
 package com.epam.core.base;
 
 import com.codeborne.selenide.WebDriverRunner;
-import org.testng.annotations.AfterTest;
+import com.epam.core.webdriver.WebDriverSingleton;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public abstract class BaseTest {
 
-    @AfterTest(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
+    public void setUpDriver() {
+        WebDriverRunner.setWebDriver(WebDriverSingleton.getDriver());
+    }
+
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        WebDriverRunner.closeWebDriver();
+        WebDriverSingleton.closeDriver();
     }
 }

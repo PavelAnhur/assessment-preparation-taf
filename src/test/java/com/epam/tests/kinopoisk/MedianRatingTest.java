@@ -8,27 +8,22 @@ import org.testng.annotations.Test;
 
 import java.util.Map;
 
+import static com.epam.core.util.reflection.StepsManager.getSteps;
+
 public class MedianRatingTest extends BaseTest {
     private static final int YEAR1 = 2019;
     private static final int YEAR2 = 2010;
-    private final AmountOfViewsTestSteps amountOfViewsTestSteps;
-    private final MedianRatingTestSteps medianRatingTestSteps;
-
-    public MedianRatingTest() {
-        amountOfViewsTestSteps = new AmountOfViewsTestSteps();
-        medianRatingTestSteps = new MedianRatingTestSteps();
-    }
 
     @Test
     public void medianRatingTest() {
-        amountOfViewsTestSteps
+        getSteps(AmountOfViewsTestSteps.class)
                 .openHomePage();
-        amountOfViewsTestSteps
+        getSteps(AmountOfViewsTestSteps.class)
                 .clickTop250link();
 
-        Map<String, String> top250Map = medianRatingTestSteps.getTop250Map();
+        Map<String, String> top250Map = getSteps(MedianRatingTestSteps.class).getTop250Map();
 
-        Assertions.assertThat(medianRatingTestSteps.getAverageRatingForManufacturedYear(top250Map, YEAR1))
-                .isGreaterThan(medianRatingTestSteps.getAverageRatingForManufacturedYear(top250Map, YEAR2));
+        Assertions.assertThat(getSteps(MedianRatingTestSteps.class).getAverageRatingForManufacturedYear(top250Map, YEAR1))
+                .isGreaterThan(getSteps(MedianRatingTestSteps.class).getAverageRatingForManufacturedYear(top250Map, YEAR2));
     }
 }

@@ -5,22 +5,21 @@ import com.epam.steps.AmountOfViewsTestSteps;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
+import static com.epam.core.util.reflection.StepsManager.getSteps;
+
 public class AmountOfViewsTest extends BaseTest {
     private static final int VIEWS_FOR_COMPARISON = 100_000;
     private static final long LOWER_BOUND_FILMS_NUMBER = 30;
     private static final long UPPER_BOUND_FILMS_NUMBER = 40;
-    private final AmountOfViewsTestSteps testSteps;
 
-    public AmountOfViewsTest() {
-        this.testSteps = new AmountOfViewsTestSteps();
-    }
 
     @Test
     public void amountOfViewsTest() {
-        testSteps.openHomePage();
-        testSteps.clickTop250link();
+        getSteps(AmountOfViewsTestSteps.class).openHomePage();
+        getSteps(AmountOfViewsTestSteps.class).clickTop250link();
 
-        Assertions.assertThat(testSteps.getFilmsNumberWithViewsLessThanCertain(VIEWS_FOR_COMPARISON))
+        Assertions.assertThat(getSteps(AmountOfViewsTestSteps.class)
+                        .getFilmsNumberWithViewsLessThanCertain(VIEWS_FOR_COMPARISON))
                 .withFailMessage(
                         String.format(
                                 "Amount of films with less than '%d' views isn't within '%d' and '%d'",

@@ -17,10 +17,11 @@ public final class WebElementService {
 
     public static Map<String, String> getMapOfElementText(final String key, final String value) {
         Map<String, String> ratingsForManufacturedYearMap = new HashMap<>();
-        final String xpathLocatorPattern = "//*[@class='film-item-rating-position__position' and text()='%d']%s";
+        final String xpathLocatorPattern =
+                "//*[@class='film-item-rating-position__position' and text()='%d']/ancestor::div[contains(@class, 'film-item')]%s";
         for (int i = 1; i <= top; i++) {
-            String keyXpathLocator = String.format(xpathLocatorPattern, i, "/../../..//*[contains(@class,'" + key + "')]");
-            String valueXpathLocator = String.format(xpathLocatorPattern, i, "/../../..//*[starts-with(@class,'" + value + "')]");
+            String keyXpathLocator = String.format(xpathLocatorPattern, i, "//*[contains(@class,'" + key + "')]");
+            String valueXpathLocator = String.format(xpathLocatorPattern, i, "//*[starts-with(@class,'" + value + "')]");
             String entryKey = $(By.xpath(keyXpathLocator)).getText();
             ratingsForManufacturedYearMap.put(entryKey, $(By.xpath(valueXpathLocator)).getText());
             if ((i % 50 == 0) && i < top) {

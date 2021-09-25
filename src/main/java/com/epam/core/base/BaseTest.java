@@ -9,7 +9,7 @@ public abstract class BaseTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUpDriver() {
-        WebDriverRunner.setWebDriver(WebDriverSingleton.getDriver());
+        WebDriverRunner.setWebDriver(new WebDriverSingleton().getDriver());
     }
 
     @AfterMethod(alwaysRun = true)

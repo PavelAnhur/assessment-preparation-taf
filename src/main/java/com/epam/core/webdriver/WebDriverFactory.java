@@ -4,6 +4,7 @@ import com.epam.core.config.PropertyDataReader;
 import com.epam.core.exceptions.CustomProjectException;
 import com.epam.core.exceptions.RemoteWebDriverException;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -19,12 +20,17 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static com.codeborne.selenide.Browsers.CHROME;
+import static com.codeborne.selenide.Browsers.FIREFOX;
+import static com.codeborne.selenide.Browsers.OPERA;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 
 @Slf4j
-public class WebDriverFactory {
+@AllArgsConstructor
+public class WebDriverFactory implements IWebDriverFactory {
     private static final String VIRTUAL_URL = PropertyDataReader.getPropertyValue("virtualUrl");
 
+    @Override
     public WebDriver setupWebDriver() {
         String browserName = System.getProperty("browser");
         WebDriver driver;
@@ -32,10 +38,10 @@ public class WebDriverFactory {
             throw new CustomProjectException("browser name can't be null");
         } else {
             switch (browserName) {
-                case "firefox":
+                case FIREFOX:
                     driver = getFirefoxDriver();
                     break;
-                case "opera":
+                case OPERA:
                     driver = getOperaDriver();
                     break;
                 case "remoteChrome":
@@ -44,7 +50,7 @@ public class WebDriverFactory {
                 case "remoteFirefox":
                     driver = getRemoteFirefoxDriver();
                     break;
-                case "chrome":
+                case CHROME:
                 default:
                     driver = getChromeDriver();
             }

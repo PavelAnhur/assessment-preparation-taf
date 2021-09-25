@@ -1,6 +1,8 @@
 package com.epam.core.webdriver;
 
+import com.epam.core.config.PropertyDataReader;
 import com.epam.core.exceptions.CustomProjectException;
+import com.epam.core.exceptions.RemoteWebDriverException;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Capabilities;
@@ -21,7 +23,7 @@ import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 
 @Slf4j
 public class WebDriverFactory {
-    private static final String VIRTUAL_URL = "http://localhost:4444/wd/hub";
+    private static final String VIRTUAL_URL = PropertyDataReader.getPropertyValue("virtualUrl");
 
     public WebDriver setupWebDriver() {
         String browserName = System.getProperty("browser");
@@ -88,6 +90,6 @@ public class WebDriverFactory {
         } catch (MalformedURLException e) {
             log.error(e.getMessage());
         }
-        throw new CustomProjectException("Failed to create web driver!");
+        throw new RemoteWebDriverException("Failed to create remote web driver!");
     }
 }

@@ -1,4 +1,4 @@
-package com.epam.core.constant;
+package com.epam.core.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

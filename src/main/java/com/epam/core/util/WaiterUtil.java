@@ -5,7 +5,7 @@ import lombok.experimental.UtilityClass;
 
 import java.util.function.Supplier;
 
-import static com.epam.core.constant.PauseConstant.PAUSE_TIME_1000;
+import static com.epam.core.enums.PauseConstant.PAUSE_TIME_1000;
 
 @UtilityClass
 public final class WaiterUtil {

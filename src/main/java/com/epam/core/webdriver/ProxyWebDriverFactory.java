@@ -1,4 +1,4 @@
-package com.epam.core.proxy.webdriver;
+package com.epam.core.webdriver;
 
 import com.epam.core.exceptions.CustomProjectException;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -13,27 +13,32 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.CapabilityType;
 
-public class ProxyWebDriverFactory {
+import static com.codeborne.selenide.Browsers.CHROME;
+import static com.codeborne.selenide.Browsers.FIREFOX;
+import static com.codeborne.selenide.Browsers.OPERA;
+
+public class ProxyWebDriverFactory implements IWebDriverFactory {
     private final Proxy proxy;
 
     public ProxyWebDriverFactory(Proxy proxy) {
         this.proxy = proxy;
     }
 
-    public WebDriver getProxyWebDriver() {
+    @Override
+    public WebDriver setupWebDriver() {
         String browserName = System.getProperty("browser");
         WebDriver driver;
         if (null == browserName) {
             throw new CustomProjectException("browser name can't be null");
         } else {
             switch (browserName) {
-                case "firefox":
+                case FIREFOX:
                     driver = getFirefoxProxyDriver();
                     break;
-                case "opera":
+                case OPERA:
                     driver = getOperaProxyDriver();
                     break;
-                case "chrome":
+                case CHROME:
                 default:
                     driver = getChromeProxyDriver();
             }

@@ -1,15 +1,14 @@
 package com.epam.core.util;
 
 import com.epam.core.exceptions.CustomProjectException;
+import lombok.experimental.UtilityClass;
 
 import java.util.function.Supplier;
 
 import static com.epam.core.constant.PauseConstant.PAUSE_TIME_1000;
 
+@UtilityClass
 public final class WaiterUtil {
-
-    private WaiterUtil() {
-    }
 
     public static void waitForTrue(Supplier<Boolean> supplier, int numberOfAttempts, String errorMessage) {
         int counter = 0;

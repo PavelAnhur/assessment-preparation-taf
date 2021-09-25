@@ -1,5 +1,6 @@
 package com.epam.core.util.reflection;
 
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationTargetException;
@@ -7,12 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
+@UtilityClass
 @SuppressWarnings("unchecked")
 public final class StepsManager {
     private static Map<String, Object> mapOfSteps;
-
-    private StepsManager() {
-    }
 
     public static <T> T getSteps(final Class<T> clazz) {
         if (mapOfSteps == null) {

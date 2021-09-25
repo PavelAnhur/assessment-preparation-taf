@@ -1,6 +1,6 @@
 package com.epam.core.util.service;
 
-import com.epam.core.config.ConfigurationProvider;
+import com.epam.core.config.PropertyDataReader;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$;
 @Slf4j
 @UtilityClass
 public final class WebElementService {
-    private final int top = ConfigurationProvider.getTop();
+    private final int top = Integer.parseInt(PropertyDataReader.getPropertyValue("topFilms"));
 
     public static Map<String, String> getMapOfElementText(final String key, final String value) {
         Map<String, String> ratingsForManufacturedYearMap = new HashMap<>();

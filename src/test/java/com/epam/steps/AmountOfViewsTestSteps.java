@@ -1,7 +1,7 @@
 package com.epam.steps;
 
 import com.epam.core.base.BaseStep;
-import com.epam.core.config.ConfigurationProvider;
+import com.epam.core.config.PropertyDataReader;
 import com.epam.core.util.service.WebElementService;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class AmountOfViewsTestSteps extends BaseStep {
 
     public void clickTop250link() {
-        log.info("click on top{} link", ConfigurationProvider.getTop());
+        log.info("click on top{} link", PropertyDataReader.getPropertyValue("topFilms"));
         $(By.xpath("//*[contains(@class,'middle')]//*[@href='/lists/top250/']")).click();
     }
 

@@ -1,6 +1,7 @@
 package com.epam.steps;
 
 import com.epam.core.base.BaseStep;
+import com.epam.core.config.ConfigurationProvider;
 import com.epam.core.util.service.WebElementService;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -8,13 +9,12 @@ import org.openqa.selenium.By;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.epam.core.constant.KinopoiskConstants.TOP;
 
 @Slf4j
 public class AmountOfViewsTestSteps extends BaseStep {
 
     public void clickTop250link() {
-        log.info("click on top{} link", TOP);
+        log.info("click on top{} link", ConfigurationProvider.getTop());
         $(By.xpath("//*[contains(@class,'middle')]//*[@href='/lists/top250/']")).click();
     }
 

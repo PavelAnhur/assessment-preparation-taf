@@ -4,10 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-import static com.epam.core.constant.KinopoiskConstants.MAX_RETRY_COUNT;
-
 @Slf4j
 public class RetryFailedTestCases implements IRetryAnalyzer {
+    private static final int MAX_RETRY_COUNT = 2;
     private int retryCount = 0;
 
     @Override

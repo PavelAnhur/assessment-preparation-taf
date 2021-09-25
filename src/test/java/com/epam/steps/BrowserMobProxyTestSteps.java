@@ -1,5 +1,6 @@
 package com.epam.steps;
 
+import com.epam.core.config.ConfigurationProvider;
 import de.sstoehr.harreader.HarReader;
 import de.sstoehr.harreader.HarReaderException;
 import de.sstoehr.harreader.model.HarEntry;
@@ -12,8 +13,6 @@ import org.openqa.selenium.WebDriver;
 import java.io.File;
 import java.util.List;
 
-import static com.epam.core.constant.KinopoiskConstants.HOME_PAGE_URL;
-
 @Slf4j
 public class BrowserMobProxyTestSteps {
     private final WebDriver driver;
@@ -25,7 +24,7 @@ public class BrowserMobProxyTestSteps {
     }
 
     public BrowserMobProxyTestSteps openHomePage() {
-        driver.get(HOME_PAGE_URL);
+        driver.get(ConfigurationProvider.getHomePageUrl());
         return this;
     }
 

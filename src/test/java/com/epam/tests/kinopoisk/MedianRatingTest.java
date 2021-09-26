@@ -13,17 +13,19 @@ import static com.epam.core.util.reflection.StepsManager.getSteps;
 public class MedianRatingTest extends BaseTest {
     private static final int YEAR1 = 2019;
     private static final int YEAR2 = 2010;
+    private final Class<AmountOfViewsTestSteps> amountOfViewsTestStepsClass = AmountOfViewsTestSteps.class;
+    private final Class<MedianRatingTestSteps> medianRatingTestStepsClass = MedianRatingTestSteps.class;
 
     @Test
     public void medianRatingTest() {
-        getSteps(AmountOfViewsTestSteps.class)
+        getSteps(amountOfViewsTestStepsClass)
                 .openHomePage();
-        getSteps(AmountOfViewsTestSteps.class)
+        getSteps(amountOfViewsTestStepsClass)
                 .clickTop250link();
 
-        Map<String, String> top250Map = getSteps(MedianRatingTestSteps.class).getTop250Map();
+        Map<String, String> top250Map = getSteps(medianRatingTestStepsClass).getTop250Map();
 
-        Assertions.assertThat(getSteps(MedianRatingTestSteps.class).getAverageRatingForManufacturedYear(top250Map, YEAR1))
-                .isGreaterThan(getSteps(MedianRatingTestSteps.class).getAverageRatingForManufacturedYear(top250Map, YEAR2));
+        Assertions.assertThat(getSteps(medianRatingTestStepsClass).getAverageRatingForManufacturedYear(top250Map, YEAR1))
+                .isGreaterThan(getSteps(medianRatingTestStepsClass).getAverageRatingForManufacturedYear(top250Map, YEAR2));
     }
 }

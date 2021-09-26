@@ -11,18 +11,21 @@ import java.util.List;
 import static com.epam.core.util.reflection.StepsManager.getSteps;
 
 public class AdvanceSearchTest extends BaseTest {
+    private static final Class<AdvanceSearchTestSteps> ADVANCE_SEARCH_TEST_STEPS_CLASS = AdvanceSearchTestSteps.class;
 
     @Test(dataProvider = "advancedSearchTestDataProvider", dataProviderClass = KinopoiskTestsDataProvider.class)
     public void kinopoiskAdvanceSearchTest(String country, List<String> genreList, String expectedSearchResult) {
 
-        getSteps(AdvanceSearchTestSteps.class).openHomePage();
-        getSteps(AdvanceSearchTestSteps.class).clickAdvancedSearchButton()
+        getSteps(ADVANCE_SEARCH_TEST_STEPS_CLASS)
+                .openHomePage();
+        getSteps(ADVANCE_SEARCH_TEST_STEPS_CLASS)
+                .clickAdvancedSearchButton()
                 .selectCountry(country)
                 .selectGenre(genreList)
                 .confirmGenre()
                 .clickSearchButton();
 
-        Assert.assertEquals(getSteps(AdvanceSearchTestSteps.class).getActualSearchResult(), expectedSearchResult,
+        Assert.assertEquals(getSteps(ADVANCE_SEARCH_TEST_STEPS_CLASS).getActualSearchResult(), expectedSearchResult,
                 String.format("Search result doesn't contain '%s'", expectedSearchResult));
     }
 }

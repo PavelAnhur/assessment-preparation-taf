@@ -49,7 +49,6 @@ public class BrowserMobProxyTestSteps {
             pngFilesCount = entries.stream()
                     .filter(entry -> Objects.equals(entry.getResponse().getContent().getMimeType(), MIME_TYPE))
                     .count();
-
         } catch (HarReaderException e) {
             log.error(e.getMessage());
         }

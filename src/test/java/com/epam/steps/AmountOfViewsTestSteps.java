@@ -1,6 +1,6 @@
 package com.epam.steps;
 
-import com.epam.core.base.BaseStep;
+import com.epam.base.BaseStep;
 import com.epam.core.config.PropertyDataReader;
 import com.epam.core.util.service.WebElementService;
 import lombok.extern.slf4j.Slf4j;

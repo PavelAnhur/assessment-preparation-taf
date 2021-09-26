@@ -1,7 +1,7 @@
 package com.epam.steps;
 
 import com.codeborne.selenide.Selenide;
-import com.epam.core.base.BaseStep;
+import com.epam.base.BaseStep;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

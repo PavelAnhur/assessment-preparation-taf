@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.epam</groupId>
-    <artifactId>Assessment-Preparation</artifactId>
+    <artifactId>assessment-preparation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

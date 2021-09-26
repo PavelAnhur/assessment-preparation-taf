@@ -31,7 +31,7 @@ public class WebDriverFactory implements IWebDriverFactory {
     private static final String VIRTUAL_URL = PropertyDataReader.getPropertyValue("virtualUrl");
 
     @Override
-    public WebDriver setupWebDriver() {
+    public WebDriver setupWebDriver() throws CustomProjectException {
         String browserName = System.getProperty("browser");
         WebDriver driver;
         if (null == browserName) {
@@ -90,7 +90,7 @@ public class WebDriverFactory implements IWebDriverFactory {
         return getRemoteWebDriver(firefoxOptions);
     }
 
-    private RemoteWebDriver getRemoteWebDriver(Capabilities options) {
+    private RemoteWebDriver getRemoteWebDriver(Capabilities options) throws RemoteWebDriverException {
         try {
             return new RemoteWebDriver(new URL(VIRTUAL_URL), options);
         } catch (MalformedURLException e) {

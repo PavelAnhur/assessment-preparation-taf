@@ -25,7 +25,7 @@ public class ProxyWebDriverFactory implements IWebDriverFactory {
     }
 
     @Override
-    public WebDriver setupWebDriver() {
+    public WebDriver setupWebDriver() throws CustomProjectException {
         String browserName = System.getProperty("browser");
         WebDriver driver;
         if (null == browserName) {

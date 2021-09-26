@@ -14,10 +14,10 @@ public final class StepsManager {
     private static Map<String, Object> mapOfSteps;
 
     public static <T> T getSteps(final Class<T> clazz) {
-        if (mapOfSteps == null) {
+        if (null == mapOfSteps) {
             mapOfSteps = new HashMap<>();
         }
-        if (mapOfSteps.get(clazz.getName()) == null) {
+        if (null == mapOfSteps.get(clazz.getName())) {
             mapOfSteps.put(clazz.getName(), createStepObject(clazz));
         }
         return (T) mapOfSteps.get(clazz.getName());

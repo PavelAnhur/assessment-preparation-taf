@@ -1,6 +1,7 @@
 package com.epam.tests.kinopoisk;
 
 import com.epam.core.annotation.Proxy;
+import com.epam.core.config.PropertyDataReader;
 import com.epam.core.proxy.SeleniumProxyConfigurator;
 import com.epam.core.webdriver.WebDriverSingleton;
 import com.epam.steps.BrowserMobProxyTestSteps;
@@ -12,7 +13,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class BrowserMobProxyTest {
-    private static final String HAR_PATHNAME = "src/test/resources/har/kinopoisk.har";
+    private static final String INITIAL_PAGE_REF = PropertyDataReader.getPropertyValue("initialPageRef");
+    private static final String HAR_FILE_NAME = PropertyDataReader.getPropertyValue("harFileName");
+    private static final String HAR_PATHNAME = "src/test/resources/har/" + HAR_FILE_NAME;
     private static final int NUMBER_PNG_FILES = 5;
     private BrowserMobProxyServer proxy;
     private WebDriver driver;
@@ -30,7 +33,7 @@ public class BrowserMobProxyTest {
 
     @Test
     public void browserMobProxyTest() {
-        proxy.newHar("kinopoisk.ru");
+        proxy.newHar(INITIAL_PAGE_REF);
         testSteps.openHomePage()
                 .createHarFile(HAR_PATHNAME);
         Assertions.assertThat(testSteps.getPngFilesCountFromHarFile(HAR_PATHNAME)).isGreaterThan(NUMBER_PNG_FILES);

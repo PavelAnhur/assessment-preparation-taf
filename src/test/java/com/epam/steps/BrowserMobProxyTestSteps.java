@@ -12,9 +12,11 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 public class BrowserMobProxyTestSteps {
+    private static final String MIME_TYPE = "image/png";
     private final WebDriver driver;
     private final BrowserMobProxyServer proxy;
 
@@ -45,7 +47,7 @@ public class BrowserMobProxyTestSteps {
                     .getEntries();
 
             pngFilesCount = entries.stream()
-                    .filter(entry -> entry.getResponse().getContent().getMimeType().equals("image/png"))
+                    .filter(entry -> Objects.equals(entry.getResponse().getContent().getMimeType(), MIME_TYPE))
                     .count();
 
         } catch (HarReaderException e) {

@@ -20,3 +20,4 @@ test-output/**
 build
 .allure
 allure-results
+allure-report

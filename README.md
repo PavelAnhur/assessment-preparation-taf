@@ -14,13 +14,15 @@ views is within 30 and 40.
 traffic, for example BrowserUp proxy https://github.com/browserup/browserup-proxy) - recommended, but optional.
 
  *********
-Run test command example:
-
+Run test command example:\
 mvn clean test -DsuiteXmlFile=testng-all -Dbrowser=opera
 
+browser can be: chrome, opera, firefox, remoteChrome, remoteFirefox\
 testng-all -- testng.xml file located in src/test/resources/
 
 **********
-Screenshots location and failed test results in folder:
-
+Screenshots location and failed test results in folder:\
 build/reports/tests/
+
+To see Allure report:\
+allure serve target/allure-results 

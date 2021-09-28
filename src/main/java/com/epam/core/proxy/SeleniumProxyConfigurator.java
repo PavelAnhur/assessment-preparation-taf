@@ -13,7 +13,7 @@ import java.net.Inet4Address;
 public final class SeleniumProxyConfigurator {
 
     @SneakyThrows
-    public static Proxy configureProxy(BrowserMobProxyServer proxy) {
+    public static Proxy configureProxy(final BrowserMobProxyServer proxy) {
         Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
         String hostIp = Inet4Address.getLocalHost().getHostAddress();
         seleniumProxy.setHttpProxy(hostIp + ":" + proxy.getPort());

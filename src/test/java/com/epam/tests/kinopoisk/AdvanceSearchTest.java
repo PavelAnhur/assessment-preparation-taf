@@ -14,7 +14,8 @@ public class AdvanceSearchTest extends BaseTest {
     private final Class<AdvanceSearchTestSteps> advanceSearchTestStepsClass = AdvanceSearchTestSteps.class;
 
     @Test(dataProvider = "advancedSearchTestDataProvider", dataProviderClass = KinopoiskTestsDataProvider.class)
-    public void kinopoiskAdvanceSearchTest(String country, List<String> genreList, String expectedSearchResult) {
+    public void kinopoiskAdvanceSearchTest(final String country, final List<String> genreList,
+                                           final String expectedSearchResult) {
 
         getSteps(advanceSearchTestStepsClass)
                 .openHomePage();

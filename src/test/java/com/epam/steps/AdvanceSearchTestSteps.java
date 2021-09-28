@@ -27,7 +27,7 @@ public class AdvanceSearchTestSteps extends BaseStep {
         return this;
     }
 
-    public AdvanceSearchTestSteps selectGenre(List<String> genreList) {
+    public AdvanceSearchTestSteps selectGenre(final List<String> genreList) {
         WebElement genreSelectBox = $(By.id("m_act[genre]"));
         Selenide.actions().moveToElement(genreSelectBox).build().perform();
 

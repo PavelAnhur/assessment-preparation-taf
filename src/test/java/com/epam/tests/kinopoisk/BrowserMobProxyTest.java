@@ -17,6 +17,7 @@ public class BrowserMobProxyTest {
     private static final String HAR_FILE_NAME = PropertyDataReader.getPropertyValue("harFileName");
     private static final String HAR_PATHNAME = "src/test/resources/har/" + HAR_FILE_NAME;
     private static final int NUMBER_PNG_FILES = 5;
+    private static final int PORT = 8080;
     private BrowserMobProxyServer proxy;
     private WebDriver driver;
     private BrowserMobProxyTestSteps testSteps;
@@ -26,7 +27,7 @@ public class BrowserMobProxyTest {
     public void setup() {
         proxy = new BrowserMobProxyServer();
         proxy.setTrustAllServers(true);
-        proxy.start(8080);
+        proxy.start(PORT);
         driver = new WebDriverSingleton(SeleniumProxyConfigurator.configureProxy(proxy)).getDriver();
         testSteps = new BrowserMobProxyTestSteps(driver, proxy);
     }

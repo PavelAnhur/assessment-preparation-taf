@@ -85,7 +85,7 @@ public class WebDriverFactory implements IWebDriverFactory {
         return getRemoteWebDriver(firefoxOptions);
     }
 
-    private RemoteWebDriver getRemoteWebDriver(Capabilities options) throws RemoteWebDriverException {
+    private RemoteWebDriver getRemoteWebDriver(final Capabilities options) throws RemoteWebDriverException {
         try {
             return new RemoteWebDriver(new URL(VIRTUAL_URL), options);
         } catch (MalformedURLException e) {

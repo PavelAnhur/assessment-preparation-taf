@@ -25,7 +25,10 @@ public class MedianRatingTest extends BaseTest {
 
         Map<String, String> top250Map = getSteps(medianRatingTestStepsClass).getTop250Map();
 
-        Assertions.assertThat(getSteps(medianRatingTestStepsClass).getAverageRatingForManufacturedYear(top250Map, YEAR1))
-                .isGreaterThan(getSteps(medianRatingTestStepsClass).getAverageRatingForManufacturedYear(top250Map, YEAR2));
+        Assertions.assertThat(
+                getSteps(medianRatingTestStepsClass).getAverageRatingForManufacturedYear(top250Map, YEAR1)
+        ).isGreaterThan(
+                getSteps(medianRatingTestStepsClass).getAverageRatingForManufacturedYear(top250Map, YEAR2)
+        );
     }
 }

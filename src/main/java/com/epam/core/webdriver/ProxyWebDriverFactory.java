@@ -17,8 +17,8 @@ import org.openqa.selenium.remote.CapabilityType;
 public class ProxyWebDriverFactory implements IWebDriverFactory {
     private final Proxy proxy;
 
-    public ProxyWebDriverFactory(Proxy proxy) {
-        this.proxy = proxy;
+    public ProxyWebDriverFactory(final Proxy pr) {
+        this.proxy = pr;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class ProxyWebDriverFactory implements IWebDriverFactory {
         return new OperaDriver(options);
     }
 
-    private void setOptions(MutableCapabilities options) {
+    private void setOptions(final MutableCapabilities options) {
         options.setCapability(CapabilityType.PROXY, proxy);
         options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);

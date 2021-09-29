@@ -53,6 +53,20 @@
                         <version>8.40</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <propertyExpansion>config_loc=${basedir}/src/main/resources</propertyExpansion>
+                    <configLocation>${basedir}/src/main/resources/sun_checks_custom.xml</configLocation>
+                    <suppressionsLocation>${basedir}/src/main/resources/suppressions.xml</suppressionsLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

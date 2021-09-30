@@ -15,6 +15,7 @@ import static com.codeborne.selenide.Selenide.$;
 public final class WebElementService {
     private final int top = Integer.parseInt(PropertyDataReader.getPropertyValue("topFilms"));
 
+    @SuppressWarnings("checkstyle:MagicNumber")
     public static Map<String, String> getMapOfElementText(final String key, final String value) {
         Map<String, String> ratingsForManufacturedYearMap = new HashMap<>();
         final String xpathLocatorPattern =

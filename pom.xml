@@ -13,6 +13,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.8.M1</aspectj.version>
+        <checkstyle.config.location>/src/main/resources/sun_checks_custom.xml</checkstyle.config.location>
     </properties>
 
     <build>
@@ -40,6 +41,32 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.40</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <propertyExpansion>config_loc=${basedir}/src/main/resources</propertyExpansion>
+                    <configLocation>${basedir}/src/main/resources/sun_checks_custom.xml</configLocation>
+                    <suppressionsLocation>${basedir}/src/main/resources/suppressions.xml</suppressionsLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -87,11 +114,6 @@
             <artifactId>assertj-core</artifactId>
             <version>3.20.2</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>picocontainer</groupId>
-            <artifactId>picocontainer</artifactId>
-            <version>20051006.102514</version>
         </dependency>
         <dependency>
             <groupId>com.codeborne</groupId>

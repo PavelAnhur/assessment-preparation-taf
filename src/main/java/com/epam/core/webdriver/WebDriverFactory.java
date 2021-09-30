@@ -1,6 +1,7 @@
 package com.epam.core.webdriver;
 
 import com.epam.core.config.PropertyDataReader;
+import com.epam.core.enums.Browser;
 import com.epam.core.exceptions.CustomProjectException;
 import com.epam.core.exceptions.RemoteWebDriverException;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -20,9 +21,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.codeborne.selenide.Browsers.CHROME;
-import static com.codeborne.selenide.Browsers.FIREFOX;
-import static com.codeborne.selenide.Browsers.OPERA;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 
 @Slf4j
@@ -33,28 +31,25 @@ public class WebDriverFactory implements IWebDriverFactory {
     @Override
     public WebDriver setupWebDriver() throws CustomProjectException {
         String browserName = System.getProperty("browser");
+        Browser browser = Browser.valueOf(browserName.toUpperCase());
         WebDriver driver;
-        if (null == browserName) {
-            throw new CustomProjectException("browser name can't be null");
-        } else {
-            switch (browserName) {
-                case FIREFOX:
-                    driver = getFirefoxDriver();
-                    break;
-                case OPERA:
-                    driver = getOperaDriver();
-                    break;
-                case "remoteChrome":
-                    driver = getRemoteChromeDriver();
-                    break;
-                case "remoteFirefox":
+        switch (browser) {
+            case FIREFOX:
+                driver = getFirefoxDriver();
+                break;
+            case OPERA:
+                driver = getOperaDriver();
+                break;
+            case REMOTECHROME:
+                driver = getRemoteChromeDriver();
+                break;
+            case REMOTEFIREFOX:
                     driver = getRemoteFirefoxDriver();
                     break;
                 case CHROME:
                 default:
                     driver = getChromeDriver();
             }
-        }
         driver.manage().window().maximize();
         return driver;
     }
@@ -90,7 +85,7 @@ public class WebDriverFactory implements IWebDriverFactory {
         return getRemoteWebDriver(firefoxOptions);
     }
 
-    private RemoteWebDriver getRemoteWebDriver(Capabilities options) throws RemoteWebDriverException {
+    private RemoteWebDriver getRemoteWebDriver(final Capabilities options) throws RemoteWebDriverException {
         try {
             return new RemoteWebDriver(new URL(VIRTUAL_URL), options);
         } catch (MalformedURLException e) {

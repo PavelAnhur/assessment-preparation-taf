@@ -7,7 +7,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-public class KinopoiskTestsDataProvider {
+public final class KinopoiskTestsDataProvider {
+
+    private KinopoiskTestsDataProvider() {
+    }
 
     @DataProvider
     public static Iterator<Object[]> advancedSearchTestDataProvider() {

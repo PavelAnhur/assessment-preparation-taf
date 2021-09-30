@@ -12,22 +12,22 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.$;
 
 @Slf4j
-public class AdvanceSearchTestSteps extends BaseStep {
+public class AdvanceSearchSteps extends BaseStep {
 
-    public AdvanceSearchTestSteps clickAdvancedSearchButton() {
+    public AdvanceSearchSteps clickAdvancedSearchButton() {
         log.info("click advance search button");
         $(By.xpath("//a[@aria-label='advanced-search']")).click();
         return this;
     }
 
-    public AdvanceSearchTestSteps selectCountry(final String country) {
+    public AdvanceSearchSteps selectCountry(final String country) {
         log.info("select country from dropdown");
         $("#country").click();
         $(By.xpath(String.format("//option[text()='%s']", country))).click();
         return this;
     }
 
-    public AdvanceSearchTestSteps selectGenre(List<String> genreList) {
+    public AdvanceSearchSteps selectGenre(List<String> genreList) {
         WebElement genreSelectBox = $(By.id("m_act[genre]"));
         Selenide.actions().moveToElement(genreSelectBox).build().perform();
 
@@ -37,7 +37,7 @@ public class AdvanceSearchTestSteps extends BaseStep {
         return this;
     }
 
-    public AdvanceSearchTestSteps confirmGenre() {
+    public AdvanceSearchSteps confirmGenre() {
         log.info("select genre's checkbox");
         $(By.xpath("//input[@id='m_act[genre_and]']")).setSelected(true);
         return this;

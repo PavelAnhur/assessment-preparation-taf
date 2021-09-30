@@ -1,7 +1,7 @@
 package com.epam.tests.kinopoisk;
 
 import com.epam.core.base.BaseTest;
-import com.epam.steps.AmountOfViewsTestSteps;
+import com.epam.steps.AmountOfViewsSteps;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
@@ -11,14 +11,14 @@ public class AmountOfViewsTest extends BaseTest {
     private static final int VIEWS_FOR_COMPARISON = 100_000;
     private static final long LOWER_BOUND_FILMS_NUMBER = 30;
     private static final long UPPER_BOUND_FILMS_NUMBER = 40;
-    private final Class<AmountOfViewsTestSteps> amountOfViewsTestStepsClass = AmountOfViewsTestSteps.class;
+    private final Class<AmountOfViewsSteps> amountOfViewsStepsClass = AmountOfViewsSteps.class;
 
     @Test
     public void amountOfViewsTest() {
-        getSteps(amountOfViewsTestStepsClass).openHomePage();
-        getSteps(amountOfViewsTestStepsClass).clickTop250link();
+        getSteps(amountOfViewsStepsClass).openHomePage();
+        getSteps(amountOfViewsStepsClass).clickTop250link();
 
-        Assertions.assertThat(getSteps(amountOfViewsTestStepsClass)
+        Assertions.assertThat(getSteps(amountOfViewsStepsClass)
                         .getFilmsNumberWithViewsLessThanCertain(VIEWS_FOR_COMPARISON))
                 .withFailMessage(
                         String.format(

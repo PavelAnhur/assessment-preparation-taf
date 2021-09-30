@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public class MedianRatingTestSteps extends BaseStep {
+public class MedianRatingSteps extends BaseStep {
 
     public Map<String, String> getTop250Map() {
         return WebElementService.getMapOfElementText("original-name", "rating__value");

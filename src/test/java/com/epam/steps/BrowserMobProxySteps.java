@@ -15,17 +15,17 @@ import java.util.List;
 import java.util.Objects;
 
 @Slf4j
-public class BrowserMobProxyTestSteps {
+public class BrowserMobProxySteps {
     private static final String MIME_TYPE = "image/png";
     private final WebDriver driver;
     private final BrowserMobProxyServer proxy;
 
-    public BrowserMobProxyTestSteps(WebDriver driver, BrowserMobProxyServer proxy) {
+    public BrowserMobProxySteps(WebDriver driver, BrowserMobProxyServer proxy) {
         this.driver = driver;
         this.proxy = proxy;
     }
 
-    public BrowserMobProxyTestSteps openHomePage() {
+    public BrowserMobProxySteps openHomePage() {
         driver.get(PropertyDataReader.getPropertyValue("homePage"));
         return this;
     }

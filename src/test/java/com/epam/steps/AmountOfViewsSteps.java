@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import static com.codeborne.selenide.Selenide.$;
 
 @Slf4j
-public class AmountOfViewsTestSteps extends BaseStep {
+public class AmountOfViewsSteps extends BaseStep {
 
     public void clickTop250link() {
         log.info("click on top{} link", PropertyDataReader.getPropertyValue("topFilms"));

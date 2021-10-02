@@ -15,7 +15,9 @@ traffic, for example BrowserUp proxy https://github.com/browserup/browserup-prox
 
  *********
 Run test command example:\
-mvn clean test -DsuiteXmlFile=testng-all -Dbrowser=opera
+mvn clean test -DsuiteXmlFile=testng-all -Dbrowser=opera\
+or:\
+add Run/Debug Configuration with VM Options -Dbrowser=${your browser}
 
 browser can be: chrome, opera, firefox, remoteChrome, remoteFirefox\
 testng-all -- testng.xml file located in src/test/resources/

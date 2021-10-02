@@ -1,16 +1,35 @@
 package com.epam.steps;
 
-import com.epam.base.BaseStep;
+import com.epam.core.config.PropertyDataReader;
 import com.epam.core.exceptions.CustomProjectException;
 import com.epam.core.util.service.WebElementService;
+import com.epam.pages.kinopoisk.HomePage;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.open;
+
 @Slf4j
-public class MedianRatingSteps extends BaseStep {
+public class MedianRatingTestSteps {
+    private final HomePage homePage;
+
+    public MedianRatingTestSteps() {
+        this.homePage = new HomePage();
+    }
+
+    public MedianRatingTestSteps openHomePage() {
+        open(homePage.getHomePageUrl());
+        log.info("open home page '{}'", homePage.getHomePageUrl());
+        return this;
+    }
+
+    public void clickTop250link() {
+        log.info("click on top{} link", PropertyDataReader.getPropertyValue("topFilms"));
+        homePage.clickTop250Link();
+    }
 
     public Map<String, String> getTop250Map() {
         return WebElementService.getMapOfElementText("original-name", "rating__value");

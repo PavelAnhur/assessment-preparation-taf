@@ -5,7 +5,7 @@ import com.epam.steps.AmountOfViewsSteps;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
-import static com.epam.core.util.reflection.StepsManager.getSteps;
+import static com.epam.core.util.reflection.StepManager.getSteps;
 
 public class AmountOfViewsTest extends BaseTest {
     private static final int VIEWS_FOR_COMPARISON = 100_000;
@@ -15,8 +15,9 @@ public class AmountOfViewsTest extends BaseTest {
 
     @Test
     public void amountOfViewsTest() {
-        getSteps(amountOfViewsStepsClass).openHomePage();
-        getSteps(amountOfViewsStepsClass).clickTop250link();
+        getSteps(amountOfViewsStepsClass)
+                .openHomePage()
+                .clickTop250link();
 
         Assertions.assertThat(getSteps(amountOfViewsStepsClass)
                         .getFilmsNumberWithViewsLessThanCertain(VIEWS_FOR_COMPARISON))

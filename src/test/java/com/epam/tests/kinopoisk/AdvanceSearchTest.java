@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.epam.core.util.reflection.StepsManager.getSteps;
+import static com.epam.core.util.reflection.StepManager.getSteps;
 
 public class AdvanceSearchTest extends BaseTest {
     private final Class<AdvanceSearchSteps> advanceSearchStepsClass = AdvanceSearchSteps.class;
@@ -18,13 +18,9 @@ public class AdvanceSearchTest extends BaseTest {
                                            final String expectedSearchResult) {
 
         getSteps(advanceSearchStepsClass)
-                .openHomePage();
-        getSteps(advanceSearchStepsClass)
+                .openHomePage()
                 .clickAdvancedSearchButton()
-                .selectCountry(country)
-                .selectGenre(genreList)
-                .confirmGenre()
-                .clickSearchButton();
+                .searchForParticularFilm(country, genreList);
 
         Assert.assertEquals(getSteps(advanceSearchStepsClass).getActualSearchResult(), expectedSearchResult,
                 String.format("Search result doesn't contain '%s'", expectedSearchResult));

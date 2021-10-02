@@ -1,21 +1,31 @@
 package com.epam.steps;
 
-import com.epam.base.BaseStep;
 import com.epam.core.config.PropertyDataReader;
 import com.epam.core.util.service.WebElementService;
+import com.epam.pages.kinopoisk.HomePage;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
 
 import java.util.stream.Collectors;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 @Slf4j
-public class AmountOfViewsSteps extends BaseStep {
+public class AmountOfViewsSteps {
+    private final HomePage homePage;
+
+    public AmountOfViewsSteps() {
+        homePage = new HomePage();
+    }
+
+    public AmountOfViewsSteps openHomePage() {
+        open(homePage.getHomePageUrl());
+        log.info("open home page '{}'", homePage.getHomePageUrl());
+        return this;
+    }
 
     public void clickTop250link() {
         log.info("click on top{} link", PropertyDataReader.getPropertyValue("topFilms"));
-        $(By.xpath("//*[contains(@class,'middle')]//*[@href='/lists/top250/']")).click();
+        homePage.clickTop250Link();
     }
 
     public long getFilmsNumberWithViewsLessThanCertain(final int viewsForComparison) {

@@ -10,7 +10,7 @@ import java.util.Map;
 @Slf4j
 @UtilityClass
 @SuppressWarnings("unchecked")
-public final class StepsManager {
+public final class StepManager {
     private static Map<String, Object> mapOfSteps;
 
     public static <T> T getSteps(final Class<T> clazz) {

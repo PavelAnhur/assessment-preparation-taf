@@ -20,9 +20,9 @@ public class BrowserMobProxySteps {
     private final WebDriver driver;
     private final BrowserMobProxyServer proxy;
 
-    public BrowserMobProxySteps(WebDriver driver, BrowserMobProxyServer proxy) {
-        this.driver = driver;
-        this.proxy = proxy;
+    public BrowserMobProxySteps(final WebDriver webDriver, final BrowserMobProxyServer proxyServer) {
+        this.driver = webDriver;
+        this.proxy = proxyServer;
     }
 
     public BrowserMobProxySteps openHomePage() {

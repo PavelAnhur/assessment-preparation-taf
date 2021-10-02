@@ -1,55 +1,59 @@
 package com.epam.steps;
 
 import com.codeborne.selenide.Selenide;
-import com.epam.base.BaseStep;
+import com.epam.pages.kinopoisk.AdvanceSearchPage;
+import com.epam.pages.kinopoisk.HomePage;
+import com.epam.pages.kinopoisk.SearchResultPage;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 @Slf4j
-public class AdvanceSearchSteps extends BaseStep {
+public class AdvanceSearchSteps {
+    private final HomePage homePage;
+    private final AdvanceSearchPage advanceSearchPage;
+    private final SearchResultPage searchResultPage;
 
-    public AdvanceSearchSteps clickAdvancedSearchButton() {
+    public AdvanceSearchSteps() {
+        this.homePage = new HomePage();
+        this.advanceSearchPage = new AdvanceSearchPage();
+        this.searchResultPage = new SearchResultPage();
+    }
+
+    public AdvanceSearchSteps openHomePage() {
+        open(homePage.getHomePageUrl());
+        log.info("open home page '{}'", homePage.getHomePageUrl());
+        return this;
+    }
+
+    public AdvanceSearchSteps clickAdvanceSearchButton() {
         log.info("click advance search button");
-        $(By.xpath("//a[@aria-label='advanced-search']")).click();
+        homePage.clickAdvancedSearchButton();
         return this;
     }
 
-    public AdvanceSearchSteps selectCountry(final String country) {
+    public void searchForParticularFilm(final String country, final List<String> genreList) {
         log.info("select country from dropdown");
-        $("#country").click();
-        $(By.xpath(String.format("//option[text()='%s']", country))).click();
-        return this;
-    }
+        advanceSearchPage.clickOnCountryDropdown();
+        advanceSearchPage.selectCountry(country);
 
-    public AdvanceSearchSteps selectGenre(List<String> genreList) {
-        WebElement genreSelectBox = $(By.id("m_act[genre]"));
-        Selenide.actions().moveToElement(genreSelectBox).build().perform();
-
+        Selenide.actions().moveToElement(advanceSearchPage.getGenreSelectBox()).build().perform();
         log.info("select {} genres", genreList);
-        Select select = new Select(genreSelectBox);
+        Select select = new Select(advanceSearchPage.getGenreSelectBox());
         genreList.forEach(select::selectByVisibleText);
-        return this;
-    }
 
-    public AdvanceSearchSteps confirmGenre() {
         log.info("select genre's checkbox");
-        $(By.xpath("//input[@id='m_act[genre_and]']")).setSelected(true);
-        return this;
-    }
+        advanceSearchPage.selectGenreCheckbox();
 
-    public void clickSearchButton() {
         log.info("click search button");
-        $("input.el_18.submit.nice_button").click();
+        advanceSearchPage.clickSearchButton();
     }
 
     public String getActualSearchResult() {
-        String actualSearchResult = $(By.xpath("//span[@class='num' and text()='1']/..//p[@class='name']/a")).getText();
+        String actualSearchResult = searchResultPage.getTextFromSearchResultFilmElement();
         log.info("search result: '{}'", actualSearchResult);
         return actualSearchResult;
     }

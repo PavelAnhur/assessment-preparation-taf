@@ -1,5 +1,7 @@
 package com.epam.core.webdriver;
 
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import com.epam.core.config.PropertyDataReader;
 import com.epam.core.enums.Browser;
 import com.epam.core.exceptions.CustomProjectException;
@@ -8,18 +10,20 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 
@@ -76,9 +80,21 @@ public class WebDriverFactory implements IWebDriverFactory {
     }
 
     private WebDriver getRemoteChromeDriver() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setCapability(BROWSER_NAME, BrowserType.CHROME);
-        return getRemoteWebDriver(chromeOptions);
+//        ChromeOptions chromeOptions = new ChromeOptions();
+//        chromeOptions.setCapability(BROWSER_NAME, BrowserType.CHROME);
+        DesiredCapabilities cap = new DesiredCapabilities();
+        cap.setBrowserName("chrome");
+        cap.setPlatform(Platform.ANY);
+        cap.setCapability("chrome.switches", List.of("--disable-notifications"));
+
+        Configuration.browserCapabilities = cap;
+        Configuration.browser = "chrome";
+        Configuration.timeout = 10000;
+
+        Configuration.remote = VIRTUAL_URL;
+        WebDriverRunner.setWebDriver(getRemoteWebDriver(cap));
+
+        return WebDriverRunner.getWebDriver();
     }
 
     private WebDriver getRemoteFirefoxDriver() {

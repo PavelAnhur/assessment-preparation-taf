@@ -1,5 +1,6 @@
 package com.epam.steps;
 
+import com.codeborne.selenide.Configuration;
 import com.epam.core.config.PropertyDataReader;
 import com.epam.core.util.service.WebElementService;
 import com.epam.pages.kinopoisk.HomePage;
@@ -18,6 +19,7 @@ public class AmountOfViewsSteps {
     }
 
     public AmountOfViewsSteps openHomePage() {
+        Configuration.remote = "http://192.168.0.16:4444/wd/hub";
         open(homePage.getHomePageUrl());
         log.info("open home page '{}'", homePage.getHomePageUrl());
         return this;

@@ -44,12 +44,14 @@ public class WebDriverFactory implements IWebDriverFactory {
                 driver = getRemoteChromeDriver();
                 break;
             case REMOTEFIREFOX:
-                    driver = getRemoteFirefoxDriver();
-                    break;
-                case CHROME:
-                default:
-                    driver = getChromeDriver();
-            }
+                driver = getRemoteFirefoxDriver();
+                break;
+            case CHROME:
+                driver = getChromeDriver();
+                break;
+            default:
+                throw new CustomProjectException("Can't create web driver");
+        }
         driver.manage().window().maximize();
         return driver;
     }

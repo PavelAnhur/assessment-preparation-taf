@@ -40,7 +40,10 @@ public class AdvanceSearchSteps {
         advanceSearchPage.clickOnCountryDropdown();
         advanceSearchPage.selectCountry(country);
 
-        Selenide.actions().moveToElement(advanceSearchPage.getGenreSelectBox()).build().perform();
+        Selenide.actions()
+                .moveToElement(advanceSearchPage.getGenreSelectBox())
+                .build()
+                .perform();
         log.info("select {} genres", genreList);
         Select select = new Select(advanceSearchPage.getGenreSelectBox());
         genreList.forEach(select::selectByVisibleText);

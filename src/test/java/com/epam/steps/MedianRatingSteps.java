@@ -1,5 +1,6 @@
 package com.epam.steps;
 
+import com.codeborne.selenide.Selenide;
 import com.epam.core.config.PropertyDataReader;
 import com.epam.core.exceptions.CustomProjectException;
 import com.epam.core.util.service.WebElementService;
@@ -28,7 +29,8 @@ public class MedianRatingSteps {
 
     public void clickTop250link() {
         log.info("click on top{} link", PropertyDataReader.getPropertyValue("topFilms"));
-        homePage.clickTop250Link();
+        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", homePage.getTop250Link());
+        homePage.getTop250Link().click();
     }
 
     public Map<String, String> getTop250Map() {

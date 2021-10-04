@@ -8,9 +8,7 @@ import lombok.Getter;
 public enum Browser {
     CHROME("chrome"),
     FIREFOX("firefox"),
-    OPERA("opera"),
-    REMOTECHROME("remoteChrome"),
-    REMOTEFIREFOX("remoteFirefox");
+    OPERA("opera");
 
     private String value;
 }

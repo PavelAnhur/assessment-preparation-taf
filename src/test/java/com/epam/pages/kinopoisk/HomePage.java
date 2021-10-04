@@ -19,7 +19,7 @@ public class HomePage {
         advanceSearchButton.click();
     }
 
-    public void clickTop250Link() {
-        top250Link.click();
+    public SelenideElement getTop250Link() {
+        return top250Link;
     }
 }

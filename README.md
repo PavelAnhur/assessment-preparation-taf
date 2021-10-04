@@ -15,16 +15,24 @@ traffic, for example BrowserUp proxy https://github.com/browserup/browserup-prox
 
  *********
 Run test command example:\
-mvn clean test -DsuiteXmlFile=testng-all -Dbrowser=${your browser}\
+mvn clean test -DsuiteXmlFile=testng-all.xml -Dbrowser=${your browser}\
 or:\
 add Run/Debug Configuration with VM Options -Dbrowser=${your browser}
 
 browser list: chrome, opera, firefox, remoteChrome, remoteFirefox\
-testng-all -- testng.xml file located in src/test/resources/
+testng-all.xml -- testng.xml file located in src/test/resources/
 
 **********
 Screenshots location and failed test results in folder:\
 build/reports/tests/
 
 To see Allure report:\
-allure serve target/allure-results 
+allure serve target/allure-results
+**********
+Selenium Grid run instructions:
+
+1. Run hub and nodes on the remote machine
+2. mvn clean test -Dselenide.remote=http://${remote ip}:4444/wd/hub -Dbrowser=${your browser}
+   -DsuiteXmlFile=testng-all.xml
+
+browsers for remote run: chrome, firefox

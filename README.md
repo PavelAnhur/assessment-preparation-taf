@@ -32,7 +32,13 @@ allure serve target/allure-results
 Selenium Grid run instructions:
 
 1. Run hub and nodes on the remote machine
-2. mvn clean test -Dselenide.remote=http://${remote ip}:4444/wd/hub -Dbrowser=${your browser}
-   -DsuiteXmlFile=testng-all.xml
+2. mvn clean test -Dselenide.remote=http://${remote ip}:4444/wd/hub -Dbrowser=${your browser} -DsuiteXmlFile=testng-all.xml
 
-browsers for remote run: chrome, firefox
+available browsers: chrome, firefox
+**********
+Selenium Grid + Docker:
+
+1. docker-compose -f docker-compose-v3.yml up 
+2. mvn clean test -Dselenide.remote=http://${remote ip}:4444/wd/hub -Dbrowser=${your browser} -DsuiteXmlFile=testng-all.xml
+
+available browsers: chrome, firefox

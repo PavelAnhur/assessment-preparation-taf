@@ -8,7 +8,8 @@ import lombok.Getter;
 public enum Browser {
     CHROME("chrome"),
     FIREFOX("firefox"),
-    OPERA("opera");
+    OPERA("opera"),
+    EDGE("edge");
 
     private String value;
 }

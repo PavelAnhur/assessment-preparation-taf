@@ -45,4 +45,4 @@ Selenium Grid + Docker:
 2. mvn clean test -Dselenide.remote=http://${remote ip}:4444/wd/hub -Dbrowser=${your browser}
    -DsuiteXmlFile=testng-all.xml
 
-available browsers: chrome, firefox
+available browsers: chrome, firefox, edge

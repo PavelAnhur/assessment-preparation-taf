@@ -2,6 +2,8 @@
 
 UI tests for kinopoisk.ru
 
+This is a tutorial example, so weird solutions are present :)
+
 1 Using Advanced Search mode («Расширенный поиск») select country «СССР», fill genre with multiple values «детский,
 мультфильм, семейный», perform search and verify that the 1st in list is «Винни Пух».
 

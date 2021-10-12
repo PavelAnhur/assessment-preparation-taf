@@ -8,25 +8,24 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.core.har.Har;
-import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
+import static com.codeborne.selenide.Selenide.open;
+
 @Slf4j
 public class BrowserMobProxySteps {
     private static final String MIME_TYPE = "image/png";
-    private final WebDriver driver;
     private final BrowserMobProxyServer proxy;
 
-    public BrowserMobProxySteps(final WebDriver webDriver, final BrowserMobProxyServer proxyServer) {
-        this.driver = webDriver;
+    public BrowserMobProxySteps(final BrowserMobProxyServer proxyServer) {
         this.proxy = proxyServer;
     }
 
     public BrowserMobProxySteps openHomePage() {
-        driver.get(PropertyDataReader.getPropertyValue("homePage"));
+        open(PropertyDataReader.getPropertyValue("homePage"));
         return this;
     }
 

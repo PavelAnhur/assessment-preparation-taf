@@ -7,16 +7,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static com.epam.core.enums.Browser.CHROME;
+import static com.epam.core.enums.Browser.EDGE;
 import static com.epam.core.enums.Browser.FIREFOX;
 
 @Slf4j
 public class RemoteWebDriverTuner {
+    private static final int TIMEOUT = 10_000;
 
     public void configRemoteWebDriver() {
         String browserName = System.getProperty("browser");
@@ -28,11 +32,14 @@ public class RemoteWebDriverTuner {
             case CHROME:
                 configRemoteChromeWebDriver();
                 break;
+            case EDGE:
+                configRemoteEdgeWebDriver();
+                break;
             default:
                 throw new CustomProjectException("Can't set remote web driver up");
         }
 
-        Configuration.timeout = 10_000;
+        Configuration.timeout = TIMEOUT;
         Configuration.startMaximized = true;
     }
 
@@ -44,6 +51,17 @@ public class RemoteWebDriverTuner {
 
         Configuration.browserCapabilities = cap;
         Configuration.browser = FIREFOX.getValue();
+    }
+
+    private void configRemoteEdgeWebDriver() {
+        EdgeOptions options = new EdgeOptions();
+        HashMap<String, Object> edgePrefs = new HashMap<>();
+        edgePrefs.put("profile.default_content_settings.popups", 0);
+        options.setCapability("prefs", edgePrefs);
+        options.setCapability("useAutomationExtension", false);
+
+        Configuration.browserCapabilities = options;
+        Configuration.browser = EDGE.getValue();
     }
 
     private void configRemoteChromeWebDriver() {
@@ -61,4 +79,6 @@ public class RemoteWebDriverTuner {
         Configuration.browserCapabilities = cap;
         Configuration.browser = CHROME.getValue();
     }
+
+
 }

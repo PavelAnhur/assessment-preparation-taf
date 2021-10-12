@@ -2,6 +2,8 @@
 
 UI tests for kinopoisk.ru
 
+This is a tutorial example, so weird solutions are present :)
+
 1 Using Advanced Search mode («Расширенный поиск») select country «СССР», fill genre with multiple values «детский,
 мультфильм, семейный», perform search and verify that the 1st in list is «Винни Пух».
 
@@ -38,7 +40,9 @@ available browsers: chrome, firefox, edge
 **********
 Selenium Grid + Docker:
 
-1. docker-compose -f docker-compose-v3.yml up 
-2. mvn clean test -Dselenide.remote=http://${remote ip}:4444/wd/hub -Dbrowser=${your browser} -DsuiteXmlFile=testng-all.xml
+1. docker-compose -f docker-compose-v3.yml up\
+   (all needed instructions in docker-compose-v3.yml file)
+2. mvn clean test -Dselenide.remote=http://${remote ip}:4444/wd/hub -Dbrowser=${your browser}
+   -DsuiteXmlFile=testng-all.xml
 
-available browsers: chrome, firefox
+available browsers: chrome, firefox, edge

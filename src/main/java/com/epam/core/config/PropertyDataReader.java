@@ -11,7 +11,7 @@ public final class PropertyDataReader {
 
     private static final String CONFIGURATION = "configuration";
 
-    public static String getPropertyValue(final String propertyName) {
+    public String getPropertyValue(final String propertyName) {
         String propertyValue = ResourceBundle.getBundle(CONFIGURATION).getString(propertyName);
         log.info("{} property value: '{}'", propertyName, propertyValue);
         return propertyValue;

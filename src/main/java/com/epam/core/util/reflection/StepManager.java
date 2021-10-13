@@ -13,7 +13,7 @@ import java.util.Map;
 public final class StepManager {
     private static Map<String, Object> mapOfSteps;
 
-    public static <T> T getSteps(final Class<T> clazz) {
+    public <T> T getSteps(final Class<T> clazz) {
         if (null == mapOfSteps) {
             mapOfSteps = new HashMap<>();
         }
@@ -23,7 +23,7 @@ public final class StepManager {
         return (T) mapOfSteps.get(clazz.getName());
     }
 
-    private static <T> T createStepObject(final Class<T> clazz) {
+    private <T> T createStepObject(final Class<T> clazz) {
         T stepObject = null;
         try {
             stepObject = clazz.getConstructor().newInstance();

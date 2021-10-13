@@ -1,4 +1,4 @@
-package com.epam.core.base;
+package com.epam.tests;
 
 import com.epam.core.webdriver.WebDriverConfigurator;
 import com.epam.core.webdriver.WebDriverSingleton;

@@ -16,7 +16,7 @@ public final class WebElementService {
     private static final int RESULTS_AMOUNT_ON_PAGE = 50;
     private final int top = Integer.parseInt(PropertyDataReader.getPropertyValue("topFilms"));
 
-    public static Map<String, String> getMapOfElementText(final String key, final String value) {
+    public Map<String, String> getMapOfElementText(final String key, final String value) {
         Map<String, String> ratingsForManufacturedYearMap = new HashMap<>();
         final String xpathLocatorPattern =
                 "//*[@class='film-item-rating-position__position' and text()='%d']/ancestor::div[contains(@class, 'film-item')]%s";

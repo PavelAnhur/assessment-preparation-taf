@@ -1,7 +1,7 @@
 package com.epam.core.webdriver;
 
 import com.epam.core.enums.Browser;
-import com.epam.core.exceptions.CustomProjectException;
+import com.epam.core.exceptions.ProxyWebDriverException;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
@@ -22,7 +22,7 @@ public class ProxyWebDriverFactory implements IWebDriverFactory {
     }
 
     @Override
-    public WebDriver setupWebDriver() throws CustomProjectException {
+    public WebDriver setupWebDriver() throws ProxyWebDriverException {
         String browserName = System.getProperty("browser");
         Browser browser = Browser.valueOf(browserName.toUpperCase());
         WebDriver driver;
@@ -34,8 +34,10 @@ public class ProxyWebDriverFactory implements IWebDriverFactory {
                 driver = getOperaProxyDriver();
                 break;
             case CHROME:
-            default:
                 driver = getChromeProxyDriver();
+                break;
+            default:
+                throw new ProxyWebDriverException("Can't create web driver");
         }
         driver.manage().window().maximize();
         return driver;

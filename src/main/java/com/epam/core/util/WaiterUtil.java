@@ -10,8 +10,7 @@ import static com.epam.core.enums.PauseConstant.PAUSE_TIME_1000;
 @UtilityClass
 public final class WaiterUtil {
 
-    public static void waitForTrue(final Supplier<Boolean> supplier, final int numberOfAttempts,
-                                   final String errorMessage) {
+    public void waitForTrue(final Supplier<Boolean> supplier, final int numberOfAttempts, final String errorMessage) {
         int counter = 0;
         while (counter < numberOfAttempts && !supplier.get()) {
             counter++;
@@ -22,7 +21,7 @@ public final class WaiterUtil {
         }
     }
 
-    public static void pause(final int milliseconds) {
+    public void pause(final int milliseconds) {
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {

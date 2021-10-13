@@ -36,7 +36,10 @@ public class BrowserMobProxyTest {
         proxy.newHar(INITIAL_PAGE_REF);
         testSteps.openHomePage()
                 .createHarFile(HAR_PATHNAME);
-        Assertions.assertThat(testSteps.getPngFilesCountFromHarFile(HAR_PATHNAME)).isGreaterThan(NUMBER_PNG_FILES);
+        Assertions.assertThat(
+                        testSteps.getPngFilesCountFromHarFile(HAR_PATHNAME))
+                .isGreaterThan(
+                        NUMBER_PNG_FILES);
     }
 
     @AfterClass(alwaysRun = true)

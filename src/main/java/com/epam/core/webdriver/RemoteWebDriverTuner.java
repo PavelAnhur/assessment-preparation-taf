@@ -2,7 +2,7 @@ package com.epam.core.webdriver;
 
 import com.codeborne.selenide.Configuration;
 import com.epam.core.enums.Browser;
-import com.epam.core.exceptions.CustomProjectException;
+import com.epam.core.exceptions.RemoteWebDriverException;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
@@ -36,7 +36,7 @@ public class RemoteWebDriverTuner {
                 configRemoteEdgeWebDriver();
                 break;
             default:
-                throw new CustomProjectException("Can't set remote web driver up");
+                throw new RemoteWebDriverException("Can't set remote web driver up");
         }
 
         Configuration.timeout = TIMEOUT;

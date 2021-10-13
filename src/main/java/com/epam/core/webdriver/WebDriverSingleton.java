@@ -17,11 +17,9 @@ public final class WebDriverSingleton {
 
     public WebDriver getDriver() {
         if (null == DRIVER.get()) {
-            if (ClassScanner.isAnnotatedWithProxy()) {
-                DRIVER.set(new ProxyWebDriverFactory(proxy).setupWebDriver());
-            } else {
-                DRIVER.set(new LocalWebDriverFactory().setupWebDriver());
-            }
+            DRIVER.set(ClassScanner.isAnnotatedWithProxy()
+                    ? new ProxyWebDriverFactory(proxy).setupWebDriver()
+                    : new LocalWebDriverFactory().setupWebDriver());
         }
         return DRIVER.get();
     }

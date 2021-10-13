@@ -15,7 +15,7 @@ import java.util.Set;
 @UtilityClass
 public final class ClassScanner {
 
-    public static boolean isAnnotatedWithProxy() {
+    public boolean isAnnotatedWithProxy() {
         Reflections reflections = new Reflections(new ConfigurationBuilder()
                 .setUrls(ClasspathHelper.forPackage("com.epam.tests.kinopoisk"))
                 .setScanners(new MethodAnnotationsScanner()));

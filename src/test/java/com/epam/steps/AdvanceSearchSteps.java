@@ -49,7 +49,7 @@ public class AdvanceSearchSteps {
         genreList.forEach(select::selectByVisibleText);
 
         log.info("select genre's checkbox");
-        advanceSearchPage.selectGenreCheckbox();
+        advanceSearchPage.selectGenreCheckbox(true);
 
         log.info("click search button");
         advanceSearchPage.clickSearchButton();

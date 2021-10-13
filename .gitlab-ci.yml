@@ -7,7 +7,7 @@ stages:
 variables:
   DANGER_GITLAB_HOST: "git.epam.com"
   DANGER_GITLAB_API_BASE_URL: "https://git.epam.com/api/v4"
-  CHECKSTYLE_THRESHOLD: 15
+  CHECKSTYLE_THRESHOLD: 5
 
 # STAGE: validate
 

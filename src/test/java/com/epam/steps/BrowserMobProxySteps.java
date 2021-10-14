@@ -1,6 +1,6 @@
 package com.epam.steps;
 
-import com.epam.core.config.PropertyDataReader;
+import com.epam.core.configuration.property.PropertyDataReader;
 import de.sstoehr.harreader.HarReader;
 import de.sstoehr.harreader.HarReaderException;
 import de.sstoehr.harreader.model.HarEntry;

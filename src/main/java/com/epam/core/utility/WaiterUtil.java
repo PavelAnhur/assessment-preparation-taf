@@ -1,4 +1,4 @@
-package com.epam.core.util;
+package com.epam.core.utility;
 
 import com.epam.core.exceptions.CustomProjectException;
 import lombok.experimental.UtilityClass;

@@ -2,8 +2,8 @@ package com.epam.tests.kinopoisk;
 
 import com.codeborne.selenide.WebDriverRunner;
 import com.epam.core.annotation.Proxy;
-import com.epam.core.config.PropertyDataReader;
-import com.epam.core.config.proxy.SeleniumProxyConfigurator;
+import com.epam.core.configuration.property.PropertyDataReader;
+import com.epam.core.configuration.proxy.SeleniumProxyConfigurator;
 import com.epam.core.webdriver.WebDriverSingleton;
 import com.epam.steps.BrowserMobProxySteps;
 import net.lightbody.bmp.BrowserMobProxyServer;

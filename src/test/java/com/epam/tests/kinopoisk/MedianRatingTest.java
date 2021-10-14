@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import java.util.Map;
 
-import static com.epam.core.util.reflection.StepManager.getSteps;
+import static com.epam.core.reflection.StepManager.getSteps;
 
 public class MedianRatingTest extends BaseTest {
     private static final int YEAR1 = 2019;

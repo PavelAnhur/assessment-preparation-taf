@@ -1,6 +1,6 @@
-package com.epam.core.util.service;
+package com.epam.core.utility.service;
 
-import com.epam.core.config.PropertyDataReader;
+import com.epam.core.configuration.property.PropertyDataReader;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;

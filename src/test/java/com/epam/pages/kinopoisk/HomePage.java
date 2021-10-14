@@ -1,7 +1,7 @@
 package com.epam.pages.kinopoisk;
 
 import com.codeborne.selenide.SelenideElement;
-import com.epam.core.config.PropertyDataReader;
+import com.epam.core.configuration.property.PropertyDataReader;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;

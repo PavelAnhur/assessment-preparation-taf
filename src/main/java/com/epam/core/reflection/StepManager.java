@@ -1,4 +1,4 @@
-package com.epam.core.util.reflection;
+package com.epam.core.reflection;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;

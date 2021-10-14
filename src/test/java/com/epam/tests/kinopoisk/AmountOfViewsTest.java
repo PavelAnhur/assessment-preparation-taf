@@ -5,7 +5,7 @@ import com.epam.tests.BaseTest;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
-import static com.epam.core.util.reflection.StepManager.getSteps;
+import static com.epam.core.reflection.StepManager.getSteps;
 
 public class AmountOfViewsTest extends BaseTest {
     private static final int VIEWS_FOR_COMPARISON = 100_000;

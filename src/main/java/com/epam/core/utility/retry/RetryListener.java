@@ -1,4 +1,4 @@
-package com.epam.core.util.retry;
+package com.epam.core.utility.retry;
 
 import org.testng.IAnnotationTransformer;
 import org.testng.annotations.ITestAnnotation;

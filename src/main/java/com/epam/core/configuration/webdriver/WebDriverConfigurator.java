@@ -1,4 +1,4 @@
-package com.epam.core.config.webdriver;
+package com.epam.core.configuration.webdriver;
 
 import com.codeborne.selenide.WebDriverRunner;
 import com.epam.core.webdriver.WebDriverSingleton;

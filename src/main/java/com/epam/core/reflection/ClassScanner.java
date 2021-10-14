@@ -1,4 +1,4 @@
-package com.epam.core.util.reflection;
+package com.epam.core.reflection;
 
 import com.epam.core.annotation.Proxy;
 import lombok.experimental.UtilityClass;

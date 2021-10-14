@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static com.epam.core.util.reflection.StepManager.getSteps;
+import static com.epam.core.reflection.StepManager.getSteps;
 
 public class AdvanceSearchTest extends BaseTest {
 

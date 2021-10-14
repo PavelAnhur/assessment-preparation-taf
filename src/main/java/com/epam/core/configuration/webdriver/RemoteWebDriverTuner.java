@@ -1,4 +1,4 @@
-package com.epam.core.config.webdriver;
+package com.epam.core.configuration.webdriver;
 
 import com.codeborne.selenide.Configuration;
 import com.epam.core.enums.Browser;

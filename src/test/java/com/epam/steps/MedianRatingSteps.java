@@ -1,9 +1,9 @@
 package com.epam.steps;
 
 import com.codeborne.selenide.Selenide;
-import com.epam.core.config.PropertyDataReader;
+import com.epam.core.configuration.property.PropertyDataReader;
 import com.epam.core.exceptions.CustomProjectException;
-import com.epam.core.util.service.WebElementService;
+import com.epam.core.utility.service.WebElementService;
 import com.epam.pages.kinopoisk.HomePage;
 import lombok.extern.slf4j.Slf4j;
 

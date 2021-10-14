@@ -1,4 +1,4 @@
-package com.epam.core.util.retry;
+package com.epam.core.utility.retry;
 
 import lombok.extern.slf4j.Slf4j;
 import org.testng.IRetryAnalyzer;

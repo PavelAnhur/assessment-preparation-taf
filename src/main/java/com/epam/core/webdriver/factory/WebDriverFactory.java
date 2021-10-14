@@ -1,4 +1,4 @@
-package com.epam.core.webdriver;
+package com.epam.core.webdriver.factory;
 
 import com.epam.core.util.reflection.ClassScanner;
 import org.openqa.selenium.Proxy;
@@ -6,8 +6,8 @@ import org.openqa.selenium.Proxy;
 public class WebDriverFactory implements AbstractDriverFactory<IWebDriver> {
     private final Proxy proxy;
 
-    public WebDriverFactory(final Proxy proxy) {
-        this.proxy = proxy;
+    public WebDriverFactory(final Proxy pr) {
+        this.proxy = pr;
     }
 
     @Override

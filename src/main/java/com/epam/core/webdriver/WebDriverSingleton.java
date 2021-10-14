@@ -1,5 +1,6 @@
 package com.epam.core.webdriver;
 
+import com.epam.core.webdriver.factory.WebDriverFactory;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Proxy;
@@ -18,7 +19,7 @@ public final class WebDriverSingleton {
         return DRIVER.get();
     }
 
-    public static void closeDriver() {
+    public void closeDriver() {
         if (null != DRIVER.get()) {
             try {
                 DRIVER.get().quit();

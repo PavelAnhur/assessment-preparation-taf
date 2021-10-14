@@ -27,7 +27,9 @@ public class BrowserMobProxyTest {
         mobProxyServer = new BrowserMobProxyServer();
         mobProxyServer.setTrustAllServers(true);
         mobProxyServer.start(PORT);
-        WebDriverRunner.setWebDriver(WebDriverSingleton.getDriver(SeleniumProxyConfigurator.configureProxy(mobProxyServer)));
+        WebDriverRunner.setWebDriver(
+                WebDriverSingleton.getDriver(SeleniumProxyConfigurator.configureProxy(mobProxyServer))
+        );
         testSteps = new BrowserMobProxySteps(mobProxyServer);
     }
 

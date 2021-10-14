@@ -1,4 +1,4 @@
-package com.epam.core.webdriver;
+package com.epam.core.webdriver.factory;
 
 public interface AbstractDriverFactory<T> {
 

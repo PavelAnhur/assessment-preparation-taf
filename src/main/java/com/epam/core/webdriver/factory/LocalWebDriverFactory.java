@@ -1,4 +1,4 @@
-package com.epam.core.webdriver;
+package com.epam.core.webdriver.factory;
 
 import com.epam.core.enums.Browser;
 import com.epam.core.exceptions.LocalWebDriverException;

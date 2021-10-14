@@ -1,6 +1,7 @@
-package com.epam.core.webdriver;
+package com.epam.core.webdriver.config;
 
 import com.codeborne.selenide.WebDriverRunner;
+import com.epam.core.webdriver.WebDriverSingleton;
 
 public class WebDriverConfigurator {
     private boolean isWebDriverControlledByUser;

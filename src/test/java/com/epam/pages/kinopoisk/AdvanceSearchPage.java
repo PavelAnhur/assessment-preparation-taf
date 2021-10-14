@@ -24,7 +24,7 @@ public class AdvanceSearchPage {
         return genreSelectBox;
     }
 
-    public void selectGenreCheckbox(boolean flag) {
+    public void selectGenreCheckbox(final boolean flag) {
         genreCheckbox.setSelected(flag);
     }
 

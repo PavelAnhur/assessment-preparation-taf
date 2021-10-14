@@ -4,7 +4,7 @@ import com.epam.core.exceptions.LocalWebDriverException;
 import com.epam.core.exceptions.ProxyWebDriverException;
 import org.openqa.selenium.WebDriver;
 
-public interface IWebDriverFactory {
+public interface IWebDriver {
 
     WebDriver setupWebDriver() throws LocalWebDriverException, ProxyWebDriverException;
 }

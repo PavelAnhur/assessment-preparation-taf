@@ -14,7 +14,7 @@ import org.openqa.selenium.opera.OperaDriver;
 
 @Slf4j
 @AllArgsConstructor
-public class LocalWebDriverFactory implements IWebDriverFactory {
+public class LocalWebDriverFactory implements IWebDriver {
 
     @Override
     public WebDriver setupWebDriver() throws LocalWebDriverException {

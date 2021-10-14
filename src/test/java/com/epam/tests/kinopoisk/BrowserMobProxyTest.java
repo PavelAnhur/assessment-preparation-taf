@@ -18,22 +18,22 @@ public class BrowserMobProxyTest {
     private static final String HAR_PATHNAME = "src/test/resources/har/" + HAR_FILE_NAME;
     private static final int NUMBER_PNG_FILES = 5;
     private static final int PORT = 8080;
-    private BrowserMobProxyServer proxy;
+    private BrowserMobProxyServer mobProxyServer;
     private BrowserMobProxySteps testSteps;
 
-    @BeforeClass
     @Proxy
+    @BeforeClass(alwaysRun = true)
     public void setup() {
-        proxy = new BrowserMobProxyServer();
-        proxy.setTrustAllServers(true);
-        proxy.start(PORT);
-        WebDriverRunner.setWebDriver(new WebDriverSingleton(SeleniumProxyConfigurator.configureProxy(proxy)).getDriver());
-        testSteps = new BrowserMobProxySteps(proxy);
+        mobProxyServer = new BrowserMobProxyServer();
+        mobProxyServer.setTrustAllServers(true);
+        mobProxyServer.start(PORT);
+        WebDriverRunner.setWebDriver(WebDriverSingleton.getDriver(SeleniumProxyConfigurator.configureProxy(mobProxyServer)));
+        testSteps = new BrowserMobProxySteps(mobProxyServer);
     }
 
-    @Test()
+    @Test(singleThreaded = true)
     public void browserMobProxyTest() {
-        proxy.newHar(INITIAL_PAGE_REF);
+        mobProxyServer.newHar(INITIAL_PAGE_REF);
         testSteps.openHomePage()
                 .createHarFile(HAR_PATHNAME);
         Assertions.assertThat(
@@ -44,7 +44,7 @@ public class BrowserMobProxyTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        proxy.stop();
+        mobProxyServer.stop();
         WebDriverSingleton.closeDriver();
     }
 }

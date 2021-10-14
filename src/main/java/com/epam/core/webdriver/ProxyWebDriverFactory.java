@@ -14,7 +14,7 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.CapabilityType;
 
-public class ProxyWebDriverFactory implements IWebDriverFactory {
+public class ProxyWebDriverFactory implements IWebDriver {
     private final Proxy proxy;
 
     public ProxyWebDriverFactory(final Proxy pr) {

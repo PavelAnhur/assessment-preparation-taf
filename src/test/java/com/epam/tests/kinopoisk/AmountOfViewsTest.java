@@ -1,7 +1,7 @@
 package com.epam.tests.kinopoisk;
 
-import com.epam.tests.BaseTest;
 import com.epam.steps.AmountOfViewsSteps;
+import com.epam.tests.BaseTest;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
@@ -16,7 +16,8 @@ public class AmountOfViewsTest extends BaseTest {
     public void amountOfViewsTest() {
         AmountOfViewsSteps steps = getSteps(AmountOfViewsSteps.class);
 
-        steps.openHomePage().clickTop250link();
+        steps.openHomePage()
+                .clickTop250link();
 
         Assertions.assertThat(steps.getFilmsNumberWithViewsLessThanCertain(VIEWS_FOR_COMPARISON))
                 .withFailMessage(

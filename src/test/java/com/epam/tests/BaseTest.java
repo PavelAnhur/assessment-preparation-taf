@@ -1,7 +1,7 @@
 package com.epam.tests;
 
+import com.epam.core.config.webdriver.WebDriverConfigurator;
 import com.epam.core.webdriver.WebDriverSingleton;
-import com.epam.core.webdriver.config.WebDriverConfigurator;
 import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

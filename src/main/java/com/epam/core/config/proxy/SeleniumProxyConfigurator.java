@@ -1,4 +1,4 @@
-package com.epam.core.proxy;
+package com.epam.core.config.proxy;
 
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;

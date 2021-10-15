@@ -6,12 +6,16 @@ import com.epam.core.configuration.property.PropertyDataReader;
 import com.epam.core.configuration.proxy.SeleniumProxyConfigurator;
 import com.epam.core.webdriver.WebDriverSingleton;
 import com.epam.steps.BrowserMobProxySteps;
+import lombok.extern.slf4j.Slf4j;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.net.UnknownHostException;
+
+@Slf4j
 public class BrowserMobProxyTest {
     private static final String INITIAL_PAGE_REF = PropertyDataReader.getPropertyValue("initialPageRef");
     private static final String HAR_FILE_NAME = PropertyDataReader.getPropertyValue("harFileName");
@@ -27,9 +31,7 @@ public class BrowserMobProxyTest {
         mobProxyServer = new BrowserMobProxyServer();
         mobProxyServer.setTrustAllServers(true);
         mobProxyServer.start(PORT);
-        WebDriverRunner.setWebDriver(
-                WebDriverSingleton.getDriver(SeleniumProxyConfigurator.configureProxy(mobProxyServer))
-        );
+        setUpWebDriver(mobProxyServer);
         testSteps = new BrowserMobProxySteps(mobProxyServer);
     }
 
@@ -38,15 +40,25 @@ public class BrowserMobProxyTest {
         mobProxyServer.newHar(INITIAL_PAGE_REF);
         testSteps.openHomePage()
                 .createHarFile(HAR_PATHNAME);
+
         Assertions.assertThat(
-                        testSteps.getPngFilesCountFromHarFile(HAR_PATHNAME))
-                .isGreaterThan(
-                        NUMBER_PNG_FILES);
+                testSteps.getPngFilesCountFromHarFile(HAR_PATHNAME)
+        ).isGreaterThan(
+                NUMBER_PNG_FILES);
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         mobProxyServer.stop();
         WebDriverSingleton.closeDriver();
+    }
+
+    private void setUpWebDriver(final BrowserMobProxyServer proxy) {
+        try {
+            WebDriverRunner.setWebDriver(
+                    WebDriverSingleton.getDriver(SeleniumProxyConfigurator.configureProxy(proxy)));
+        } catch (UnknownHostException exception) {
+            log.error(exception.getMessage());
+        }
     }
 }

@@ -1,6 +1,6 @@
 package com.epam.core.utility;
 
-import com.epam.core.exceptions.CustomProjectException;
+import com.epam.core.exceptions.KinopoiskProjectException;
 import lombok.experimental.UtilityClass;
 
 import java.util.function.Supplier;
@@ -8,7 +8,7 @@ import java.util.function.Supplier;
 import static com.epam.core.enums.PauseConstant.PAUSE_TIME_1000;
 
 @UtilityClass
-public final class WaiterUtil {
+public final class WaitUtil {
 
     public void waitForTrue(final Supplier<Boolean> supplier, final int numberOfAttempts, final String errorMessage) {
         int counter = 0;
@@ -17,7 +17,7 @@ public final class WaiterUtil {
             pause(PAUSE_TIME_1000.getValue());
         }
         if (counter == numberOfAttempts) {
-            throw new CustomProjectException(errorMessage);
+            throw new KinopoiskProjectException(errorMessage);
         }
     }
 
@@ -25,7 +25,7 @@ public final class WaiterUtil {
         try {
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
-            throw new CustomProjectException("Cannot execute Thread.sleep", e);
+            throw new KinopoiskProjectException("Cannot execute Thread.sleep", e);
         }
     }
 }

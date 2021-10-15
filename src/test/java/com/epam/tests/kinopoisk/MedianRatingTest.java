@@ -25,7 +25,6 @@ public class MedianRatingTest extends BaseTest {
         Assertions.assertThat(
                 steps.getAverageRatingForManufacturedYear(top250Map, YEAR1)
         ).isGreaterThan(
-                steps.getAverageRatingForManufacturedYear(top250Map, YEAR2)
-        );
+                steps.getAverageRatingForManufacturedYear(top250Map, YEAR2));
     }
 }

@@ -19,15 +19,15 @@ public class AmountOfViewsTest extends BaseTest {
         steps.openHomePage()
                 .clickTop250link();
 
-        Assertions.assertThat(steps.getFilmsNumberWithViewsLessThanCertain(VIEWS_FOR_COMPARISON))
-                .withFailMessage(
-                        String.format(
-                                "Amount of films with less than '%d' views isn't within '%d' and '%d'",
-                                VIEWS_FOR_COMPARISON,
-                                LOWER_BOUND_FILMS_NUMBER,
-                                UPPER_BOUND_FILMS_NUMBER
-                        )
+        Assertions.assertThat(
+                steps.getFilmsNumberWithViewsLessThanCertain(VIEWS_FOR_COMPARISON)
+        ).withFailMessage(
+                String.format(
+                        "Amount of films with less than '%d' views isn't within '%d' and '%d'",
+                        VIEWS_FOR_COMPARISON,
+                        LOWER_BOUND_FILMS_NUMBER,
+                        UPPER_BOUND_FILMS_NUMBER
                 )
-                .isBetween(LOWER_BOUND_FILMS_NUMBER, UPPER_BOUND_FILMS_NUMBER);
+        ).isBetween(LOWER_BOUND_FILMS_NUMBER, UPPER_BOUND_FILMS_NUMBER);
     }
 }

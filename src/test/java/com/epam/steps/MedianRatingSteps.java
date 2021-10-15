@@ -2,7 +2,7 @@ package com.epam.steps;
 
 import com.codeborne.selenide.Selenide;
 import com.epam.core.configuration.property.PropertyDataReader;
-import com.epam.core.exceptions.CustomProjectException;
+import com.epam.core.exceptions.KinopoiskProjectException;
 import com.epam.core.utility.service.WebElementService;
 import com.epam.pages.kinopoisk.HomePage;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +53,7 @@ public class MedianRatingSteps {
                 .average()
                 .stream()
                 .findFirst()
-                .orElseThrow(() -> new CustomProjectException("average rating calculation failed"));
+                .orElseThrow(() -> new KinopoiskProjectException("average rating calculation failed"));
 
         log.info("average rating for '{}' manufactured year: '{}'", year, averageRating);
 

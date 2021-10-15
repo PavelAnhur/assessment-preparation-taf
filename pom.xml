@@ -12,8 +12,28 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <aspectj.version>1.9.8.M1</aspectj.version>
         <checkstyle.config.location>/src/main/resources/sun_checks_custom.xml</checkstyle.config.location>
+
+        <aspectj.version>1.9.8.M1</aspectj.version>
+        <maven.plugins.version>3.8.1</maven.plugins.version>
+        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
+        <checkstyle-plugin.version>3.1.2</checkstyle-plugin.version>
+        <checkstyle.version>8.40</checkstyle.version>
+        <testng.version>7.4.0</testng.version>
+        <apache.commons.version>3.12.0</apache.commons.version>
+        <slf4j.version>1.7.32</slf4j.version>
+        <projectlombok.version>1.18.20</projectlombok.version>
+        <assertj.version>3.21.0</assertj.version>
+        <codeborne.selenide.version>5.24.4</codeborne.selenide.version>
+        <qameta.allure>2.15.0</qameta.allure>
+        <commons-beanutils.version>20030211.134440</commons-beanutils.version>
+        <webdrivermanager.version>5.0.2</webdrivermanager.version>
+        <seleniumhq.selenium.version>3.141.59</seleniumhq.selenium.version>
+        <allure-testng.version>2.15.0</allure-testng.version>
+        <browsermob-core.version>2.1.5</browsermob-core.version>
+        <har-reader.version>2.2.0</har-reader.version>
+        <reflections.version>0.9.12</reflections.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
     </properties>
 
     <build>
@@ -21,7 +41,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven.plugins.version}</version>
                 <configuration>
                     <source>11</source>
                     <target>11</target>
@@ -31,7 +51,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>${surefire.plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
                         <!--suppress UnresolvedMavenProperty -->
@@ -45,12 +65,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${checkstyle-plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>8.40</version>
+                        <version>${checkstyle.version}</version>
                     </dependency>
                 </dependencies>
                 <configuration>
@@ -75,80 +95,80 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.4.0</version>
+            <version>${testng.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>${apache.commons.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.32</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.32</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>${projectlombok.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.21.0</version>
+            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>5.24.4</version>
+            <version>${codeborne.selenide.version}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
-            <version>2.15.0</version>
+            <version>${qameta.allure}</version>
         </dependency>
         <dependency>
             <artifactId>commons-beanutils</artifactId>
             <groupId>commons-beanutils</groupId>
-            <version>20030211.134440</version>
+            <version>${commons-beanutils.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.0.2</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>3.141.59</version>
+            <version>${seleniumhq.selenium.version}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.15.0</version>
+            <version>${allure-testng.version}</version>
         </dependency>
         <dependency>
             <groupId>net.lightbody.bmp</groupId>
             <artifactId>browsermob-core</artifactId>
-            <version>2.1.5</version>
+            <version>${browsermob-core.version}</version>
         </dependency>
         <dependency>
             <groupId>de.sstoehr</groupId>
             <artifactId>har-reader</artifactId>
-            <version>2.2.0</version>
+            <version>${har-reader.version}</version>
         </dependency>
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.12</version>
+            <version>${reflections.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -159,7 +179,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-maven</artifactId>
-            <version>2.10.0</version>
+            <version>${allure-maven.version}</version>
         </dependency>
     </dependencies>
     <reporting>
@@ -168,7 +188,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>${allure-maven.version}</version>
             </plugin>
         </plugins>
     </reporting>

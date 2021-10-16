@@ -32,9 +32,10 @@
         <allure-testng.version>2.15.0</allure-testng.version>
         <browsermob-core.version>2.1.5</browsermob-core.version>
         <har-reader.version>2.2.0</har-reader.version>
-        <reflections.version>0.10.1</reflections.version>
+        <reflections.version>0.9.12</reflections.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <aeonbits.owner.version>1.0.12</aeonbits.owner.version>
+        <jackson.core.version>2.13.0</jackson.core.version>
     </properties>
 
     <build>
@@ -186,6 +187,21 @@
             <groupId>org.aeonbits.owner</groupId>
             <artifactId>owner</artifactId>
             <version>${aeonbits.owner.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.core.version}</version>
         </dependency>
     </dependencies>
     <reporting>

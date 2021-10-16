@@ -31,9 +31,8 @@ public class BrowserMobProxySteps {
 
     public void createHarFile(final String harPathname) {
         Har har = proxy.getHar();
-        File harFile = new File(harPathname);
         try {
-            har.writeTo(harFile);
+            har.writeTo(new File(harPathname));
         } catch (IOException e) {
             log.error(e.getMessage());
         }

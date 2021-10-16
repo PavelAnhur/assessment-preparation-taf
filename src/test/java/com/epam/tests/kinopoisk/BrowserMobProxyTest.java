@@ -13,31 +13,30 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.net.UnknownHostException;
-
 @Slf4j
 public class BrowserMobProxyTest {
     private static final String INITIAL_PAGE_REF = ConfigurationManager.configuration().initialPageRef();
     private static final String HAR_FILE_NAME = ConfigurationManager.configuration().harFileName();
     private static final String HAR_PATHNAME = "src/test/resources/har/" + HAR_FILE_NAME;
     private static final int NUMBER_PNG_FILES = 5;
-    private static final int PORT = 8081;
-    private BrowserMobProxyServer mobProxyServer;
+    private static final int PORT = 8080;
+    private BrowserMobProxyServer browserMobProxyServer;
     private BrowserMobProxySteps testSteps;
 
     @Proxy
     @BeforeClass(alwaysRun = true)
     public void setup() {
-        mobProxyServer = new BrowserMobProxyServer();
-        mobProxyServer.setTrustAllServers(true);
-        mobProxyServer.start(PORT);
-        setUpWebDriver(mobProxyServer);
-        testSteps = new BrowserMobProxySteps(mobProxyServer);
+        browserMobProxyServer = new BrowserMobProxyServer();
+        browserMobProxyServer.setTrustAllServers(true);
+        browserMobProxyServer.start(PORT);
+        WebDriverRunner.setWebDriver(
+                WebDriverSingleton.getDriver(SeleniumProxyConfigurator.configureProxy(browserMobProxyServer)));
+        testSteps = new BrowserMobProxySteps(browserMobProxyServer);
     }
 
     @Test(singleThreaded = true)
     public void browserMobProxyTest() {
-        mobProxyServer.newHar(INITIAL_PAGE_REF);
+        browserMobProxyServer.newHar(INITIAL_PAGE_REF);
         testSteps.openHomePage()
                 .createHarFile(HAR_PATHNAME);
 
@@ -49,16 +48,7 @@ public class BrowserMobProxyTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        mobProxyServer.stop();
+        browserMobProxyServer.stop();
         WebDriverSingleton.closeDriver();
-    }
-
-    private void setUpWebDriver(final BrowserMobProxyServer proxy) {
-        try {
-            WebDriverRunner.setWebDriver(
-                    WebDriverSingleton.getDriver(SeleniumProxyConfigurator.configureProxy(proxy)));
-        } catch (UnknownHostException exception) {
-            log.error(exception.getMessage());
-        }
     }
 }

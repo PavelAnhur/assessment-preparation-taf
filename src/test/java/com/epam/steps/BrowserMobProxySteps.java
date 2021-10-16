@@ -4,12 +4,12 @@ import com.epam.core.configuration.property.ConfigurationManager;
 import de.sstoehr.harreader.HarReader;
 import de.sstoehr.harreader.HarReaderException;
 import de.sstoehr.harreader.model.HarEntry;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.core.har.Har;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,14 +29,16 @@ public class BrowserMobProxySteps {
         return this;
     }
 
-    @SneakyThrows
     public void createHarFile(final String harPathname) {
         Har har = proxy.getHar();
         File harFile = new File(harPathname);
-        har.writeTo(harFile);
+        try {
+            har.writeTo(harFile);
+        } catch (IOException e) {
+            log.error(e.getMessage());
+        }
     }
 
-    @SneakyThrows
     public long getPngFilesCountFromHarFile(final String harPathname) {
         HarReader harReader = new HarReader();
         long pngFilesCount = 0;

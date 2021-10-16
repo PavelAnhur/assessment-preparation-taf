@@ -22,7 +22,7 @@
         <testng.version>7.4.0</testng.version>
         <apache.commons.version>3.12.0</apache.commons.version>
         <slf4j.version>1.7.32</slf4j.version>
-        <projectlombok.version>1.18.20</projectlombok.version>
+        <projectlombok.version>1.18.22</projectlombok.version>
         <assertj.version>3.21.0</assertj.version>
         <codeborne.selenide.version>5.24.4</codeborne.selenide.version>
         <qameta.allure>2.15.0</qameta.allure>
@@ -32,8 +32,9 @@
         <allure-testng.version>2.15.0</allure-testng.version>
         <browsermob-core.version>2.1.5</browsermob-core.version>
         <har-reader.version>2.2.0</har-reader.version>
-        <reflections.version>0.9.12</reflections.version>
+        <reflections.version>0.10.1</reflections.version>
         <allure-maven.version>2.10.0</allure-maven.version>
+        <aeonbits.owner.version>1.0.12</aeonbits.owner.version>
     </properties>
 
     <build>
@@ -180,6 +181,11 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-maven</artifactId>
             <version>${allure-maven.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>${aeonbits.owner.version}</version>
         </dependency>
     </dependencies>
     <reporting>

@@ -1,6 +1,6 @@
 package com.epam.steps;
 
-import com.epam.core.configuration.property.PropertyDataReader;
+import com.epam.core.configuration.property.ConfigurationManager;
 import de.sstoehr.harreader.HarReader;
 import de.sstoehr.harreader.HarReaderException;
 import de.sstoehr.harreader.model.HarEntry;
@@ -25,7 +25,7 @@ public class BrowserMobProxySteps {
     }
 
     public BrowserMobProxySteps openHomePage() {
-        open(PropertyDataReader.getPropertyValue("homePage"));
+        open(ConfigurationManager.configuration().homePage());
         return this;
     }
 

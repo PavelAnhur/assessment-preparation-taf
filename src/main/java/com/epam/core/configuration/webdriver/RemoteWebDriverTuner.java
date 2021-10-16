@@ -1,6 +1,7 @@
 package com.epam.core.configuration.webdriver;
 
 import com.codeborne.selenide.Configuration;
+import com.epam.core.configuration.property.ConfigurationManager;
 import com.epam.core.enums.Browser;
 import com.epam.core.exceptions.RemoteWebDriverException;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +24,7 @@ public class RemoteWebDriverTuner {
     private static final int TIMEOUT = 10_000;
 
     public void configRemoteWebDriver() {
-        String browserName = System.getProperty("browser");
+        String browserName = ConfigurationManager.configuration().browser();
         Browser browser = Browser.valueOf(browserName.toUpperCase());
         switch (browser) {
             case FIREFOX:

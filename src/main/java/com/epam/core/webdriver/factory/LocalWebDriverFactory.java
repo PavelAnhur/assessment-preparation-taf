@@ -1,5 +1,6 @@
 package com.epam.core.webdriver.factory;
 
+import com.epam.core.configuration.property.ConfigurationManager;
 import com.epam.core.enums.Browser;
 import com.epam.core.exceptions.LocalWebDriverException;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -18,7 +19,7 @@ public class LocalWebDriverFactory implements IWebDriver {
 
     @Override
     public WebDriver setupWebDriver() throws LocalWebDriverException {
-        String browserName = System.getProperty("browser");
+        String browserName = ConfigurationManager.configuration().browser();
         Browser browser = Browser.valueOf(browserName.toUpperCase());
         WebDriver driver;
         switch (browser) {

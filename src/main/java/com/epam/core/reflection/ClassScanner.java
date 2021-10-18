@@ -19,7 +19,7 @@ public final class ClassScanner {
         Reflections reflections = new Reflections(new ConfigurationBuilder()
                 .setUrls(ClasspathHelper.forPackage("com.epam.tests.kinopoisk"))
                 .setScanners(new MethodAnnotationsScanner()));
-        Set<Method> classes = reflections.getMethodsAnnotatedWith(Proxy.class);
-        return !classes.isEmpty();
+        Set<Method> methods = reflections.getMethodsAnnotatedWith(Proxy.class);
+        return !methods.isEmpty();
     }
 }

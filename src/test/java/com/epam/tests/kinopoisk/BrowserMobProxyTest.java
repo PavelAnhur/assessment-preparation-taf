@@ -23,7 +23,6 @@ public class BrowserMobProxyTest {
     private BrowserMobProxyServer browserMobProxyServer;
     private BrowserMobProxySteps testSteps;
 
-    @Proxy
     @BeforeClass(alwaysRun = true)
     public void setup() {
         browserMobProxyServer = new BrowserMobProxyServer();
@@ -34,6 +33,7 @@ public class BrowserMobProxyTest {
         testSteps = new BrowserMobProxySteps(browserMobProxyServer);
     }
 
+    @Proxy
     @Test(singleThreaded = true)
     public void browserMobProxyTest() {
         browserMobProxyServer.newHar(INITIAL_PAGE_REF);

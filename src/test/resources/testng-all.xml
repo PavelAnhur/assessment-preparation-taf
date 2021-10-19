@@ -6,10 +6,10 @@
     </listeners>
     <test name="Kinopoisk UI Tests">
         <classes>
-            <class name="com.epam.tests.kinopoisk.AdvanceSearchTest"/>
-            <class name="com.epam.tests.kinopoisk.AmountOfViewsTest"/>
+<!--            <class name="com.epam.tests.kinopoisk.AdvanceSearchTest"/>-->
+<!--            <class name="com.epam.tests.kinopoisk.AmountOfViewsTest"/>-->
             <class name="com.epam.tests.kinopoisk.MedianRatingTest"/>
-            <class name="com.epam.tests.kinopoisk.BrowserMobProxyTest"/>
+<!--            <class name="com.epam.tests.kinopoisk.BrowserMobProxyTest"/>-->
         </classes>
     </test>
 </suite>

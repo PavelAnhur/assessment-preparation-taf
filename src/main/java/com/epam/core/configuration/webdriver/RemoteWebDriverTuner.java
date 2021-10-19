@@ -80,6 +80,4 @@ public class RemoteWebDriverTuner {
         Configuration.browserCapabilities = cap;
         Configuration.browser = CHROME.getValue();
     }
-
-
 }

@@ -20,6 +20,9 @@ public final class ClassScanner {
                 .setUrls(ClasspathHelper.forPackage("com.epam.tests.kinopoisk"))
                 .setScanners(new MethodAnnotationsScanner()));
         Set<Method> methods = reflections.getMethodsAnnotatedWith(Proxy.class);
+
+//        var clazz = Thread.currentThread().
+//        System.out.println("CLASS LOADER: " + clazz);
         return !methods.isEmpty();
     }
 }

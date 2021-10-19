@@ -1,9 +1,12 @@
 package com.epam.core.webdriver.factory;
 
 import com.epam.core.configuration.property.ConfigurationManager;
+import com.epam.core.configuration.proxy.BrowserMobProxyServerSingleton;
+import com.epam.core.configuration.proxy.SeleniumProxyConfigurator;
 import com.epam.core.enums.Browser;
 import com.epam.core.exceptions.ProxyWebDriverException;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import net.lightbody.bmp.BrowserMobProxyServer;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -18,8 +21,9 @@ import org.openqa.selenium.remote.CapabilityType;
 public class ProxyWebDriverFactory implements IWebDriver {
     private final Proxy proxy;
 
-    public ProxyWebDriverFactory(final Proxy pr) {
-        this.proxy = pr;
+    public ProxyWebDriverFactory() {
+        BrowserMobProxyServer browserMobProxyServer = BrowserMobProxyServerSingleton.getInstance();
+        this.proxy = SeleniumProxyConfigurator.configureProxy(browserMobProxyServer);
     }
 
     @Override

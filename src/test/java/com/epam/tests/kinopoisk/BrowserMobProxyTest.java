@@ -3,7 +3,7 @@ package com.epam.tests.kinopoisk;
 import com.codeborne.selenide.WebDriverRunner;
 import com.epam.core.annotation.Proxy;
 import com.epam.core.configuration.property.ConfigurationManager;
-import com.epam.core.configuration.proxy.SeleniumProxyConfigurator;
+import com.epam.core.configuration.proxy.BrowserMobProxyServerSingleton;
 import com.epam.core.webdriver.WebDriverSingleton;
 import com.epam.steps.BrowserMobProxySteps;
 import lombok.extern.slf4j.Slf4j;
@@ -19,18 +19,13 @@ public class BrowserMobProxyTest {
     private static final String HAR_FILE_NAME = ConfigurationManager.configuration().harFileName();
     private static final String HAR_PATHNAME = "src/test/resources/har/" + HAR_FILE_NAME;
     private static final int NUMBER_PNG_FILES = 5;
-    private static final int PORT = 8080;
-    private BrowserMobProxyServer browserMobProxyServer;
+    private final BrowserMobProxyServer browserMobProxyServer = BrowserMobProxyServerSingleton.getInstance();
     private BrowserMobProxySteps testSteps;
 
     @Proxy
     @BeforeClass(alwaysRun = true)
     public void setup() {
-        browserMobProxyServer = new BrowserMobProxyServer();
-        browserMobProxyServer.setTrustAllServers(true);
-        browserMobProxyServer.start(PORT);
-        WebDriverRunner.setWebDriver(
-                WebDriverSingleton.getDriver(SeleniumProxyConfigurator.configureProxy(browserMobProxyServer)));
+        WebDriverRunner.setWebDriver(WebDriverSingleton.getDriver());
         testSteps = new BrowserMobProxySteps(browserMobProxyServer);
     }
 
@@ -48,7 +43,7 @@ public class BrowserMobProxyTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-        browserMobProxyServer.stop();
+        BrowserMobProxyServerSingleton.stopProxyServer();
         WebDriverSingleton.closeDriver();
     }
 }

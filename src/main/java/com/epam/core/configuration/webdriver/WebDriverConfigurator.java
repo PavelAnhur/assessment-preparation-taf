@@ -13,7 +13,7 @@ public class WebDriverConfigurator {
             new RemoteWebDriverTuner().configRemoteWebDriver();
             isWebDriverControlledByUser = false;
         } else {
-            WebDriverRunner.setWebDriver(WebDriverSingleton.getDriver(null));
+            WebDriverRunner.setWebDriver(WebDriverSingleton.getDriver());
             isWebDriverControlledByUser = true;
         }
     }

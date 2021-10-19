@@ -3,7 +3,6 @@ package com.epam.core.webdriver;
 import com.epam.core.webdriver.factory.WebDriverFactory;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 
 @SuppressWarnings("unused")
@@ -12,9 +11,9 @@ import org.openqa.selenium.WebDriver;
 public final class WebDriverSingleton {
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
-    public WebDriver getDriver(final Proxy proxy) {
+    public WebDriver getDriver() {
         if (null == DRIVER.get()) {
-            DRIVER.set(new WebDriverFactory(proxy).create().setupWebDriver());
+            DRIVER.set(new WebDriverFactory().create().setupWebDriver());
         }
         return DRIVER.get();
     }

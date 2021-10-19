@@ -22,13 +22,13 @@ public class BrowserMobProxyTest {
     private final BrowserMobProxyServer browserMobProxyServer = BrowserMobProxyServerSingleton.getInstance();
     private BrowserMobProxySteps testSteps;
 
-    @Proxy
     @BeforeClass(alwaysRun = true)
     public void setup() {
         WebDriverRunner.setWebDriver(WebDriverSingleton.getDriver());
         testSteps = new BrowserMobProxySteps(browserMobProxyServer);
     }
 
+    @Proxy
     @Test(singleThreaded = true)
     public void browserMobProxyTest() {
         browserMobProxyServer.newHar(INITIAL_PAGE_REF);

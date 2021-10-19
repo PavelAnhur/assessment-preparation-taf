@@ -22,9 +22,12 @@ import java.util.stream.Collectors;
 @UtilityClass
 public final class ClassScanner {
 
+    public static final String TESTS_PACKAGE = "com.epam.tests.kinopoisk";
+    public static final String REGEX = "^.*void (.*Test)\\..*?$";
+
     public boolean isAnnotatedWithProxy() {
         Reflections reflections = new Reflections(new ConfigurationBuilder()
-                .setUrls(ClasspathHelper.forPackage("com.epam.tests.kinopoisk"))
+                .setUrls(ClasspathHelper.forPackage(TESTS_PACKAGE))
                 .setScanners(new MethodAnnotationsScanner()));
         Set<Method> methodSet = reflections.getMethodsAnnotatedWith(Proxy.class);
 
@@ -42,9 +45,9 @@ public final class ClassScanner {
         return compareMethodNameAndThreadClassName(methodNameList, currentThreadClassList);
     }
 
-    private void addClassNameToList(List<String> classNameList, Method method) {
+    private void addClassNameToList(final List<String> classNameList, final Method method) {
         log.info("method as generic string: '{}'", method.toGenericString());
-        Pattern pattern = Pattern.compile("^.*void (.*Test)\\..*?$");
+        Pattern pattern = Pattern.compile(REGEX);
         Matcher matcher = pattern.matcher(method.toGenericString());
         if (matcher.find()) {
             classNameList.add(matcher.group(1).trim());
@@ -59,8 +62,9 @@ public final class ClassScanner {
                 .collect(Collectors.toList());
     }
 
-    private boolean compareMethodNameAndThreadClassName(
-            List<String> methodNameList, List<String> currentThreadClassList) {
+    private boolean compareMethodNameAndThreadClassName(final List<String> methodNameList,
+                                                        final List<String> currentThreadClassList) {
+
         AtomicBoolean isConsistentNameExist = new AtomicBoolean(false);
         currentThreadClassList.forEach(element -> {
             for (String method : methodNameList) {

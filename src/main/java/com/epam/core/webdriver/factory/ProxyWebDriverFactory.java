@@ -19,12 +19,6 @@ import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.remote.CapabilityType;
 
 public class ProxyWebDriverFactory implements IWebDriver {
-    private final Proxy proxy;
-
-    public ProxyWebDriverFactory() {
-        BrowserMobProxyServer browserMobProxyServer = BrowserMobProxyServerSingleton.getInstance();
-        this.proxy = SeleniumProxyConfigurator.configureProxy(browserMobProxyServer);
-    }
 
     @Override
     public WebDriver setupWebDriver() throws ProxyWebDriverException {
@@ -73,6 +67,8 @@ public class ProxyWebDriverFactory implements IWebDriver {
     }
 
     private void setOptions(final MutableCapabilities options) {
+        BrowserMobProxyServer browserMobProxyServer = BrowserMobProxyServerSingleton.getInstance();
+        Proxy proxy = SeleniumProxyConfigurator.configureProxy(browserMobProxyServer);
         options.setCapability(CapabilityType.PROXY, proxy);
         options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);

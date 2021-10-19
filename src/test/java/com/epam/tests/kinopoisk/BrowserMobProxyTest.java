@@ -29,7 +29,7 @@ public class BrowserMobProxyTest {
     }
 
     @Proxy
-    @Test(singleThreaded = true)
+    @Test()
     public void browserMobProxyTest() {
         browserMobProxyServer.newHar(INITIAL_PAGE_REF);
         testSteps.openHomePage()

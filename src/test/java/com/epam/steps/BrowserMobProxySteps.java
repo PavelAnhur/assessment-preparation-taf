@@ -20,8 +20,8 @@ public class BrowserMobProxySteps {
     private static final String MIME_TYPE = "image/png";
     private final BrowserMobProxyServer proxy;
 
-    public BrowserMobProxySteps(final BrowserMobProxyServer proxyServer) {
-        this.proxy = proxyServer;
+    public BrowserMobProxySteps(BrowserMobProxyServer browserMobProxyServer) {
+        this.proxy = browserMobProxyServer;
     }
 
     public BrowserMobProxySteps openHomePage() {

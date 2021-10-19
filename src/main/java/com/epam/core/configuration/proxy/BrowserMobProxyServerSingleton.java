@@ -9,7 +9,7 @@ public class BrowserMobProxyServerSingleton {
 
     public BrowserMobProxyServer getInstance() {
         if (null == PROXY_SERVER.get()) {
-            PROXY_SERVER.set(BrowserMobProxyServerStarter.start());
+            PROXY_SERVER.set(BrowserMobProxyServerStarter.startAndGetProxyServer());
         }
         return PROXY_SERVER.get();
     }

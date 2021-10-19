@@ -9,8 +9,6 @@ public class WebDriverFactory implements AbstractDriverFactory<IWebDriver> {
 
     @Override
     public IWebDriver create() {
-//        return ClassScanner.isAnnotatedWithProxy() ? new ProxyWebDriverFactory() : new LocalWebDriverFactory();
-        ClassScanner.isAnnotatedWithProxy();
-        return new LocalWebDriverFactory();
+        return ClassScanner.isAnnotatedWithProxy() ? new ProxyWebDriverFactory() : new LocalWebDriverFactory();
     }
 }

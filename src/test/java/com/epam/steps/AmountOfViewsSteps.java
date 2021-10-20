@@ -1,6 +1,5 @@
 package com.epam.steps;
 
-import com.codeborne.selenide.Selenide;
 import com.epam.core.configuration.property.ConfigurationManager;
 import com.epam.core.utility.service.WebElementService;
 import com.epam.pages.kinopoisk.HomePage;
@@ -26,7 +25,7 @@ public class AmountOfViewsSteps {
 
     public void clickTop250link() {
         log.info("click on top{} link", ConfigurationManager.configuration().topFilms());
-        Selenide.executeJavaScript("arguments[0].scrollIntoView(true);", homePage.getTop250Link());
+        homePage.clickFilmsLink();
         homePage.getTop250Link().click();
     }
 

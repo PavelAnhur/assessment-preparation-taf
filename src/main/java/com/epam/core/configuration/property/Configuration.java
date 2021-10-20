@@ -25,4 +25,7 @@ public interface Configuration extends Config {
 
     @Key("kinopoisk.proxy.harFileName")
     String harFileName();
+
+    @Key("kinopoisk.proxy.port")
+    int proxyPort();
 }

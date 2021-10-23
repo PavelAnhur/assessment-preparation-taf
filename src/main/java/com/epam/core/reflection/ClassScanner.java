@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public final class ClassScanner {
 
     public static final String TESTS_PACKAGE = "com.epam.tests.kinopoisk";
-    public static final String REGEX = "^.*void (.*Test)\\..*?$";
+    public static final String METHOD_NAME_REGEX = "^.*void (.*Test)\\..*?$";
 
     public boolean isAnnotatedWithProxy() {
         Reflections reflections = new Reflections(new ConfigurationBuilder()
@@ -47,7 +47,7 @@ public final class ClassScanner {
 
     private void addClassNameToList(final List<String> classNameList, final Method method) {
         log.info("method as generic string: '{}'", method.toGenericString());
-        Pattern pattern = Pattern.compile(REGEX);
+        Pattern pattern = Pattern.compile(METHOD_NAME_REGEX);
         Matcher matcher = pattern.matcher(method.toGenericString());
         if (matcher.find()) {
             classNameList.add(matcher.group(1).trim());

@@ -13,7 +13,7 @@
     </test>
     <test name="Kinopoisk Proxy Test">
         <classes>
-            <class name="com.epam.tests.kinopoisk.BrowserMobProxyTest"/>
+            <class name="com.epam.tests.kinopoisk.BrowserUpProxyTest"/>
         </classes>
     </test>
 </suite>

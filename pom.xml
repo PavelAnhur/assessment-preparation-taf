@@ -24,13 +24,13 @@
         <slf4j.version>1.7.32</slf4j.version>
         <projectlombok.version>1.18.22</projectlombok.version>
         <assertj.version>3.21.0</assertj.version>
-        <codeborne.selenide.version>5.24.4</codeborne.selenide.version>
+        <codeborne.selenide.version>5.25.0-selenium-4.0.0</codeborne.selenide.version>
         <qameta.allure>2.15.0</qameta.allure>
         <commons-beanutils.version>20030211.134440</commons-beanutils.version>
         <webdrivermanager.version>5.0.2</webdrivermanager.version>
-        <seleniumhq.selenium.version>3.141.59</seleniumhq.selenium.version>
+        <seleniumhq.selenium.version>4.0.0</seleniumhq.selenium.version>
         <allure-testng.version>2.15.0</allure-testng.version>
-        <browsermob-core.version>2.1.5</browsermob-core.version>
+        <browserup.version>2.1.2</browserup.version>
         <har-reader.version>2.2.0</har-reader.version>
         <reflections.version>0.9.12</reflections.version>
         <allure-maven.version>2.10.0</allure-maven.version>
@@ -95,6 +95,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.browserup</groupId>
+            <artifactId>browserup-proxy-core</artifactId>
+            <version>${browserup.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
@@ -156,11 +161,6 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure-testng.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.lightbody.bmp</groupId>
-            <artifactId>browsermob-core</artifactId>
-            <version>${browsermob-core.version}</version>
         </dependency>
         <dependency>
             <groupId>de.sstoehr</groupId>

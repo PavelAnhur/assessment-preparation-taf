@@ -1,12 +1,12 @@
 package com.epam.core.webdriver.factory;
 
+import com.browserup.bup.BrowserUpProxyServer;
 import com.epam.core.configuration.property.ConfigurationManager;
-import com.epam.core.configuration.proxy.BrowserMobProxyServerSingleton;
+import com.epam.core.configuration.proxy.BrowserUpProxyServerSingleton;
 import com.epam.core.configuration.proxy.SeleniumProxyConfigurator;
 import com.epam.core.enums.Browser;
 import com.epam.core.exceptions.ProxyWebDriverException;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import net.lightbody.bmp.BrowserMobProxyServer;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -67,8 +67,8 @@ public class ProxyWebDriverFactory implements IWebDriver {
     }
 
     private void setOptions(final MutableCapabilities options) {
-        BrowserMobProxyServer browserMobProxyServer = BrowserMobProxyServerSingleton.getInstance();
-        Proxy proxy = SeleniumProxyConfigurator.configureProxy(browserMobProxyServer);
+        BrowserUpProxyServer browserUpProxyServer = BrowserUpProxyServerSingleton.getInstance();
+        Proxy proxy = SeleniumProxyConfigurator.configureProxy(browserUpProxyServer);
         options.setCapability(CapabilityType.PROXY, proxy);
         options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
         options.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);

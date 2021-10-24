@@ -1,17 +1,17 @@
 package com.epam.core.configuration.proxy;
 
+import com.browserup.bup.BrowserUpProxyServer;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import net.lightbody.bmp.BrowserMobProxyServer;
 
 @Slf4j
 @UtilityClass
-public class BrowserMobProxyServerSingleton {
-    private static final ThreadLocal<BrowserMobProxyServer> PROXY_SERVER = new ThreadLocal<>();
+public class BrowserUpProxyServerSingleton {
+    private static final ThreadLocal<BrowserUpProxyServer> PROXY_SERVER = new ThreadLocal<>();
 
-    public BrowserMobProxyServer getInstance() {
+    public BrowserUpProxyServer getInstance() {
         if (null == PROXY_SERVER.get()) {
-            PROXY_SERVER.set(new BrowserMobProxyServerStarter().startAndGetProxyServer());
+            PROXY_SERVER.set(new BrowserUpProxyServerStarter().startAndGetProxyServer());
             log.info("********* proxy server has been created ************");
         }
         log.info("*********** get the created proxy server instance *********");

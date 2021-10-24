@@ -1,12 +1,12 @@
 package com.epam.steps;
 
+import com.browserup.bup.BrowserUpProxyServer;
+import com.browserup.harreader.model.Har;
 import com.epam.core.configuration.property.ConfigurationManager;
 import de.sstoehr.harreader.HarReader;
 import de.sstoehr.harreader.HarReaderException;
 import de.sstoehr.harreader.model.HarEntry;
 import lombok.extern.slf4j.Slf4j;
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.core.har.Har;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,15 +16,15 @@ import java.util.Objects;
 import static com.codeborne.selenide.Selenide.open;
 
 @Slf4j
-public class BrowserMobProxySteps {
+public class BrowserUpMobProxySteps {
     private static final String MIME_TYPE = "image/png";
-    private final BrowserMobProxyServer proxy;
+    private final BrowserUpProxyServer proxy;
 
-    public BrowserMobProxySteps(final BrowserMobProxyServer browserMobProxyServer) {
-        this.proxy = browserMobProxyServer;
+    public BrowserUpMobProxySteps(final BrowserUpProxyServer browserUpProxyServer) {
+        this.proxy = browserUpProxyServer;
     }
 
-    public BrowserMobProxySteps openHomePage() {
+    public BrowserUpMobProxySteps openHomePage() {
         open(ConfigurationManager.configuration().homePage());
         return this;
     }

@@ -1,10 +1,10 @@
 package com.epam.core.configuration.proxy;
 
+import com.browserup.bup.BrowserUpProxyServer;
+import com.browserup.bup.client.ClientUtil;
+import com.browserup.bup.proxy.CaptureType;
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import net.lightbody.bmp.BrowserMobProxyServer;
-import net.lightbody.bmp.client.ClientUtil;
-import net.lightbody.bmp.proxy.CaptureType;
 import org.openqa.selenium.Proxy;
 
 import java.net.Inet4Address;
@@ -14,7 +14,7 @@ import java.net.UnknownHostException;
 @UtilityClass
 public final class SeleniumProxyConfigurator {
 
-    public Proxy configureProxy(final BrowserMobProxyServer proxy) {
+    public Proxy configureProxy(final BrowserUpProxyServer proxy) {
         Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
         String hostIp = null;
         try {
@@ -24,7 +24,7 @@ public final class SeleniumProxyConfigurator {
         }
         seleniumProxy.setHttpProxy(hostIp + ":" + proxy.getPort());
         seleniumProxy.setSslProxy(hostIp + ":" + proxy.getPort());
-        proxy.enableHarCaptureTypes(CaptureType.RESPONSE_CONTENT, CaptureType.REQUEST_CONTENT);
+        proxy.enableHarCaptureTypes(CaptureType.RESPONSE_CONTENT);
         return seleniumProxy;
     }
 }
